@@ -7,12 +7,39 @@ const axios = require('axios');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  username: {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    allowEmpty: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    allowEmpty: false
+  },
+  email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
+    type: Sequelize.STRING,
+  },
+  image: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    },
+    defaultImage: 'https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103596_960_720.png'
+  },
+  creditCard: {
     type: Sequelize.STRING,
   }
 })
