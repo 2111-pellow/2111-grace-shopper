@@ -5,7 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import  singlePlantReducer  from "./singlePlant"
 
-const reducer = combineReducers({ auth, singlePlantReducer })
+const reducer = combineReducers({
+  auth,
+  singlePlantReducer })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
