@@ -555,18 +555,11 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
 
-<<<<<<< HEAD
+
     await User.bulkCreate(users)
 
     await Plant.bulkCreate(plants);
-=======
-    await Promise.all(users.map(user=> {
-      return User.create(user)
-    }));
 
-    await Plant.bulkCreate(plants);
-
->>>>>>> c0e649728bd8e36c23a9de320936998a157fc4fc
   } catch (err) {
     console.log(err);
   }

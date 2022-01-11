@@ -4,8 +4,8 @@ const db = require('./db')
 const Plant = require('./models/Plant')
 const User = require('./models/User')
 
-User.hasMany(Plant)
-Plant.hasMany(User)
+// User.hasMany(Plant)
+// Plant.hasMany(User)
 
 module.exports = {
   db,
