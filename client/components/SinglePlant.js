@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
 import { getSinglePlantThunk } from "../store/singlePlant"
+import { MdAddShoppingCart } from "react-icons/md"
 
 
 
@@ -22,17 +23,17 @@ class SinglePlant extends React.Component {
         <div>
           {plant.plant_name}
         </div>
-        <div>
-          {plant.imageUrl}
-        </div>
+        <img
+          src={plant.imageUrl}
+          style={{ width: "200px", height: "200px" }} />
         <div>
          $ {plant.price}
         </div>
         <div>
           {plant.description}
         </div>
-        <button type='submit'>Add to Cart</button>
-      </div>
+        <button type="submit">{<MdAddShoppingCart />}</button>
+        </div>
     )
   }
 }
