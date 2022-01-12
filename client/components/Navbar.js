@@ -3,9 +3,10 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
+
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>FS-App-Template</h1>
+    <h1>The Greenhouse</h1>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -20,6 +21,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <Link to="/signup">Plant Room</Link>
+          <Link to="/aboutUs">About Us</Link>
+          <Link to="/cart">My Plants</Link>
         </div>
       )}
     </nav>

@@ -286,7 +286,7 @@ const users = [
     email: "flunt0@va.gov",
     password: "WrwpJz",
     image: "https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    creditCard: "3553386734099169",
+    creditCard: "3553386734099169"
   },
   {
     id: 2,
