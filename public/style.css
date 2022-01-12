@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background: #d7e8f0
 }
 
 a {
@@ -19,3 +20,5 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+
