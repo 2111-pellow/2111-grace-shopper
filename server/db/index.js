@@ -4,8 +4,7 @@ const db = require('./db')
 const Plant = require('./models/Plant')
 const User = require('./models/User')
 
-// User.hasMany(Plant)
-// Plant.hasMany(User)
+User.belongsToMany(Plant, { through: 'cart' })
 
 module.exports = {
   db,
