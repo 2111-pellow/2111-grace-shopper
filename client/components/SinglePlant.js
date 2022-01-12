@@ -4,10 +4,15 @@ import { Link } from "react-router-dom"
 import { getSinglePlantThunk } from "../store/singlePlant"
 
 
+
 class SinglePlant extends React.Component {
   componentDidMount(){
     this.props.getSinglePlant(this.props.match.params.plantId)
     console.log(this.props)
+  }
+  handleSubmit(e){
+    e.preventDefault();
+
   }
 
   render(){
@@ -26,6 +31,7 @@ class SinglePlant extends React.Component {
         <div>
           {plant.description}
         </div>
+        <button type='submit'>Add to Cart</button>
       </div>
     )
   }
@@ -34,6 +40,7 @@ class SinglePlant extends React.Component {
 const mapState = (state) => {
   return {
     plant: state.singlePlantReducer
+    //user: state.singleUserReducer
   }
 }
 
