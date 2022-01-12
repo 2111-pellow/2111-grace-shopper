@@ -6,7 +6,7 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>The Greenhouse</h1>
+    <Link to="/" style={{color: "black"}}><h1>The Greenhouse</h1></Link>
     <nav>
       {isLoggedIn ? (
         <div>
