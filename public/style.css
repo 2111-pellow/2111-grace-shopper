@@ -1,9 +1,12 @@
 body {
+
   font-family: 'Times New Roman', Times, serif;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
-  text-align: center
+  text-align: center;
+  background: #d7e8f0
+
 }
 
 button{
@@ -64,3 +67,5 @@ form div {
   margin: 1em;
   /* display: inline-block; */
 }
+
+
