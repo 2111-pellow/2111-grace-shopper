@@ -24,7 +24,7 @@ class Cart extends React.Component {
 
 const mapState = (state) => {
   return {
-    user: state.singleUserReducer
+    user: state.singleUser
   }
 }
 

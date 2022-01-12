@@ -7,24 +7,20 @@ const axios = require('axios');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true
-  },
+  username: {
+    type: Sequelize.STRING
+    },
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false,
     allowEmpty: false
   },
   lastName: {
     type: Sequelize.STRING,
-    allowNull: false,
     allowEmpty: false
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false,
     validate: {
       isEmail: true
     }

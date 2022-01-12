@@ -40,8 +40,8 @@ class SinglePlant extends React.Component {
 
 const mapState = (state) => {
   return {
-    plant: state.singlePlantReducer
-    //user: state.singleUserReducer
+    plant: state.singlePlant
+    //user: state.singleUser
   }
 }
 

@@ -10,9 +10,9 @@ import  singleUserReducer  from "./singleUser"
 
 const reducer = combineReducers({
   auth,
-  singlePlantReducer,
+  singlePlant: singlePlantReducer,
   plants: plantsReducer,
-  singleUserReducer 
+  singleUser: singleUserReducer
 });
 
 const middleware = composeWithDevTools(
