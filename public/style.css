@@ -1,6 +1,32 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  text-align: center
 }
+
+button{
+  color: rgb(94, 167, 115);
+  border-radius: 30px;
+  background: transparent;
+  margin: 20px;
+  padding: 8px;
+}
+
+input {
+  justify-content: left;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  -webkit-text-fill-color: black;
+  font-size: medium;
+  border-radius: 30px;
+  width: 16vw;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+}
+
 
 a {
   text-decoration: none;
@@ -10,12 +36,31 @@ label {
   display: block;
 }
 
+
+nav {
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    color: black;
+    display: flex;
+    padding: 20px;
+    position: relative;
+    background: inherit;
+    border-radius: 30px;
+    width: 100vw;
+    margin: 10px;
+    border-radius: 30px;
+  }
+
 nav a {
-  display: inline-block;
-  margin: 1em;
+  color: rgb(94, 167, 115);
+  padding: 30px 30px;
 }
 
+
+
 form div {
+  justify-content: left;
   margin: 1em;
-  display: inline-block;
+  /* display: inline-block; */
 }
