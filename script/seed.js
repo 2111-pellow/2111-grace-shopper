@@ -15,6 +15,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 98.0,
+    quantity: 100,
   },
   {
     plant_name: "Areca Palm",
@@ -24,6 +25,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 41.94,
+    quantity: 77,
   },
   {
     plant_name: "Boston Fern",
@@ -33,6 +35,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 17.37,
+    quantity: 32,
   },
   {
     plant_name: "Cast Iron Plant",
@@ -43,6 +46,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Medium",
     price: 37.46,
+    quantity: 47,
   },
   {
     plant_name: "Canary Date Palm",
@@ -52,6 +56,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Medium",
     price: 40.31,
+    quantity: 360,
   },
   {
     plant_name: "Amaryllis",
@@ -62,6 +67,7 @@ const plants = [
     category: "Flowers",
     easeOfCare: "Easy",
     price: 69.68,
+    quantity: 77,
   },
   {
     plant_name: "Bird of Paradise",
@@ -72,6 +78,7 @@ const plants = [
     category: "Flowers",
     easeOfCare: "Easy",
     price: 87.58,
+    quantity: 8,
   },
   {
     plant_name: "Blushing Bromeliad",
@@ -302,6 +309,18 @@ const plants = [
 
 const users = [
   {
+    firstName: "Cody",
+    lastName: "Fullstack",
+    email: "cody@fullstack.com",
+    password: "123",
+    image:
+      "https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    creditCard: "3553386734099169",
+    isAdmin: true,
+    isLoggedIn: true,
+  },
+
+  {
     firstName: "Fawne",
     lastName: "Lunt",
     email: "flunt0@va.gov",
@@ -309,7 +328,8 @@ const users = [
     image:
       "https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3553386734099169",
-    isAdmin: true,
+    isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Sarina",

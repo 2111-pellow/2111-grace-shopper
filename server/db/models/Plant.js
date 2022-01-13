@@ -27,6 +27,18 @@ const Plant = db.define("plant", {
   price: {
     type: Sequelize.DECIMAL(4, 2),
     allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0,
+      notEmpty: true,
+    },
+    defaultValue: 25,
   },
 });
 
