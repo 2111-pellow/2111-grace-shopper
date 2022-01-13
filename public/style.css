@@ -16,7 +16,18 @@ button{
   margin: 20px;
   padding: 8px;
 }
+.container{
+  display: flex;
+  background-color: whitesmoke;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.1);
+  margin: 15vh;
+  border-radius: 30px;
+  justify-content: left;
+}
+img{
+  border-radius: 30px;
 
+}
 input {
   justify-content: left;
   border-top: none;
