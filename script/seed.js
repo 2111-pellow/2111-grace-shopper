@@ -3,6 +3,7 @@
 const { db } = require("../server/db");
 const User = require("../server/db/models/user");
 const Plant = require("../server/db/models/plant");
+const Cart = require("../server/db/models/cart")
 
 //seed dummy data
 const plants = [
@@ -623,6 +624,13 @@ const users = [
   },
 ];
 
+const carts = [
+  {
+    totalPrice: "1000",
+    transactionComplete: true
+  }
+];
+
 const seed = async () => {
   try {
     await db.sync({ force: true });
@@ -630,6 +638,8 @@ const seed = async () => {
     await User.bulkCreate(users);
 
     await Plant.bulkCreate(plants);
+
+    await Cart.bulkCreate(carts);
   } catch (err) {
     console.log(err);
   }
