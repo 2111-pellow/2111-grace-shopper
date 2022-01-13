@@ -7,7 +7,6 @@ const Plant = require("../server/db/models/plant");
 //seed dummy data
 const plants = [
   {
-    id: 1,
     plant_name: "Aluminum Plant",
     description: "An easy going house plant that is generally simple to please.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/aluminum_plant.jpg",
@@ -16,7 +15,6 @@ const plants = [
     price: 98.00,
   },
   {
-    id: 2,
     plant_name: "Areca Palm",
     description: "A cane type palm growing up to 8ft tall with mulitple stems.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/areca_palm_1.jpg",
@@ -25,7 +23,6 @@ const plants = [
     price: 41.94,
   },
   {
-    id: 3,
     plant_name: "Boston Fern",
     description: "One of the easier ferns to grow indoors.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/boston_ferns_in_hanging_baskets_1.jpg",
@@ -34,7 +31,6 @@ const plants = [
     price: 17.37,
   },
   {
-    id: 4,
     plant_name: "Cast Iron Plant",
     description: "Receives its common name for its ability to withstand neglect. A nice an easy to care for foliage plant.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Aspidistra_Elatior.jpg",
@@ -43,7 +39,6 @@ const plants = [
     price: 37.46,
   },
   {
-    id: 5,
     plant_name: "Canary Date Palm",
     description: "A tough palm displaying long fronds with thin straight leaflets.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/canary.jpg",
@@ -52,7 +47,6 @@ const plants = [
     price: 40.31,
   },
   {
-    id: 6,
     plant_name: "Amaryllis",
     description: "Bulb flowering type plants that produce a cluster of attractive trumpet like flowers in different color variations.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/hippeastrum-plant.jpg",
@@ -61,7 +55,6 @@ const plants = [
     price: 69.68,
   },
   {
-    id: 7,
     plant_name: "Bird of Paradise",
     description: "The Bird of Paradise is a delightfully easy to care for plant that enjoys warm, balmy days year round.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/Strelitzia_Reginae_Flower_img1.jpg",
@@ -70,7 +63,6 @@ const plants = [
     price: 87.58,
   },
   {
-    id: 8,
     plant_name: "Blushing Bromeliad",
     description: "An interesting species from the bromeliad family which produces a red center within the rosette of leaves.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/blushing_bromeliad1.jpg",
@@ -79,7 +71,6 @@ const plants = [
     price: 13.57,
   },
   {
-    id: 9,
     plant_name: "Corsage Orchid",
     description: "The Corsage orchid is not the easiest of orchids to care due to its humidity and temperature needs.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/yellow_cattleya_orchid1.jpg",
@@ -88,7 +79,6 @@ const plants = [
     price: 53.47,
   },
   {
-    id: 10,
     plant_name: "Flaming Sword",
     description: "This species features a red sword like flower head which can grow up to 2ft tall and attractive mottled leaves.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/flaming-sword-plant.jpg",
@@ -97,7 +87,6 @@ const plants = [
     price: 2.37,
   },
   {
-    id: 11,
     plant_name: "Aloe Vera",
     description: "The Aloe Vera is a common house plant that has many potential heath benefits. An indoor Aloe is easy to grow and not demanding.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/aloe-foliage-1.jpg",
@@ -106,7 +95,6 @@ const plants = [
     price: 63.59,
   },
   {
-    id: 12,
     plant_name: "Baby Rubber Plant",
     description: "Although this plant can flower its main attraction is the foliage.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/baby_rubber_plant.jpg",
@@ -115,7 +103,6 @@ const plants = [
     price: 51.08,
   },
   {
-    id: 13,
     plant_name: "Bunny Ear Cactus",
     description: "The bunny ear cactus, also known as the polka dot cactus is a very popular plant.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Opuntia-microdasys.jpg",
@@ -124,7 +111,6 @@ const plants = [
     price: 99.21,
   },
   {
-    id: 14,
     plant_name: "Christmas Cactus",
     description: "The Christmas cactus is the ideal house plant if a grower likes to see flowers blooming from November - January.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/christmas-cactus.jpg",
@@ -133,7 +119,6 @@ const plants = [
     price: 44.30,
   },
   {
-    id: 15,
     plant_name: "Christmas cheer",
     description: "Very close relative to the Jelly beans plant displaying leaves which turn red in sunlight.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/sedum_rubrotinctum1.jpg",
@@ -142,7 +127,6 @@ const plants = [
     price: 22.04,
   },
   {
-    id: 16,
     plant_name: "Coral Cactus",
     description: "The Coral cactus is much as the name states in one sense and not in another. It's similar looking to coral but not an actual cactus.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/coral-cactus-orig.jpg",
@@ -151,7 +135,6 @@ const plants = [
     price: 81.29,
   },
   {
-    id: 17,
     plant_name: "Easter Cactus",
     description: "Tropical cactus that requires a certain amount of regular water in order to survive.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Hatiora-gaertneri.jpg",
@@ -160,7 +143,6 @@ const plants = [
     price: 17.51,
   },
   {
-    id: 18,
     plant_name: "Golden Barrel Cactus",
     description: "Globe shaped type cacti suitable for growing in conservatories, on patios or other indoor glass type rooms.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Golden_Barrel_Cactus.jpg",
@@ -169,7 +151,6 @@ const plants = [
     price: 11.83,
   },
   {
-    id: 19,
     plant_name: "Orchid Cactus",
     description: "The Orchid Cactus (forest type cacti) blooms multi-petalled bright funnel shaped flowers.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/orchid-cactus-blooming.jpg",
@@ -178,7 +159,6 @@ const plants = [
     price: 63.49,
   },
   {
-    id: 20,
     plant_name: "Rat's Tail Cactus",
     description: "Advice about the Rat's tail cactus (scientific name: Aporocactus Flagelliformis or Disocactus flagelliformis).",
     imageUrl: "https://www.houseplantsexpert.com/image-files/rats-tail-cactus-flowering.jpg",
@@ -187,7 +167,6 @@ const plants = [
     price: 5.73,
   },
   {
-    id: 21,
     plant_name: "Peruvian Apple Cactus",
     description: "The apple cactus (also known as columnar, column, hedge cactus and others) displays a prominent ribbed column stem with brown colored spines.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/peruvian-apple-cactus-close-up.jpg",
@@ -196,7 +175,6 @@ const plants = [
     price: 11.76,
   },
   {
-    id: 22,
     plant_name: "Chinese Evergreen",
     description: "Grown primarily for the attractive leathery leaves.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/aglaonema.png",
@@ -205,7 +183,6 @@ const plants = [
     price: 84.19,
   },
   {
-    id: 23,
     plant_name: "Heart Of Jesus",
     description: "The caladium is a tuber species which displays the attractive bicolor leaves.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/caladium1.jpg",
@@ -214,7 +191,6 @@ const plants = [
     price: 49.16,
   },
   {
-    id: 24,
     plant_name: "Lucky Bamboo",
     description: "An easy to grow plant which can thrive in soil or water.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/lucky-bamboo-plant.jpg",
@@ -223,7 +199,6 @@ const plants = [
     price: 59.50,
   },
   {
-    id: 25,
     plant_name: "Madagascar Dragon Tree",
     description: "Most definitely one of the easiest indoor plants to grow and maintain. Dracaena Marginata trees can grow up to 6ft high.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Dracaena-marginata.jpg",
@@ -232,7 +207,6 @@ const plants = [
     price: 68.78,
   },
   {
-    id: 26,
     plant_name: "Mexican Fortune Tree",
     description: "A tree type plant growing up to 10ft tall or even kept to bonsai size indoors.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/pachira_braided_trunks.jpg",
@@ -241,7 +215,6 @@ const plants = [
     price: 61.81,
   },
   {
-    id: 27,
     plant_name: "Umbrella Tree",
     description: "An evergreen tree type species which grows up to 10ft or more tall.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/umbrella_plant.jpg",
@@ -250,7 +223,6 @@ const plants = [
     price: 97.02,
   },
   {
-    id: 28,
     plant_name: "Trailing Jade",
     description: "Trailing jade is a semi-succulent suitable for hanging baskets and windowsills.",
     imageUrl: "https://www.houseplantsexpert.com/assets/images/trailing_jade_peperomia1.jpg",
@@ -259,7 +231,6 @@ const plants = [
     price: 9.21,
   },
   {
-    id: 29,
     plant_name: "Madagascar Jasmine",
     description: "A flowering climbing vine which blooms white colored fragrant flowers in the right conditions.",
     imageUrl: "https://www.houseplantsexpert.com/image-files/m_jasmine2.jpg",
@@ -268,7 +239,6 @@ const plants = [
     price: 15.98,
   },
   {
-    id: 30,
     plant_name: "Rose Of China",
     description: "All about the Rose of China (botanical name Hibiscus Rosa-Sinensis).",
     imageUrl: "https://www.houseplantsexpert.com/image-files/Hibiscus-Rosa-Sinensis-Flower.jpg",
@@ -280,7 +250,6 @@ const plants = [
 
 const users = [
   {
-    id: 1,
     firstName: "Fawne",
     lastName: "Lunt",
     email: "flunt0@va.gov",
@@ -289,7 +258,6 @@ const users = [
     creditCard: "3553386734099169"
   },
   {
-    id: 2,
     firstName: "Sarina",
     lastName: "Cranham",
     email: "scranham1@biglobe.ne.jp",
@@ -298,7 +266,6 @@ const users = [
     creditCard: "4844087180715467",
   },
   {
-    id: 3,
     firstName: "Maiga",
     lastName: "Sigg",
     email: "msigg2@yahoo.co.jp",
@@ -307,7 +274,6 @@ const users = [
     creditCard: "30356510277759",
   },
   {
-    id: 4,
     firstName: "Etheline",
     lastName: "Wardle",
     email: "ewardle3@washington.edu",
@@ -316,7 +282,6 @@ const users = [
     creditCard: "3557474566891576",
   },
   {
-    id: 5,
     firstName: "Kori",
     lastName: "Doig",
     email: "kdoig4@chronoengine.com",
@@ -325,7 +290,6 @@ const users = [
     creditCard: "56022106041440869",
   },
   {
-    id: 6,
     firstName: "Calhoun",
     lastName: "Riley",
     email: "criley5@bbc.co.uk",
@@ -334,7 +298,6 @@ const users = [
     creditCard: "3543018002553295",
   },
   {
-    id: 7,
     firstName: "Guntar",
     lastName: "Works",
     email: "gworks6@scientificamerican.com",
@@ -343,7 +306,6 @@ const users = [
     creditCard: "3551452110394848",
   },
   {
-    id: 8,
     firstName: "Britt",
     lastName: "Burroughes",
     email: "bburroughes7@addtoany.com",
@@ -352,7 +314,6 @@ const users = [
     creditCard: "3572512095378655",
   },
   {
-    id: 9,
     firstName: "Sammy",
     lastName: "Camolli",
     email: "scamolli8@theglobeandmail.com",
@@ -361,7 +322,6 @@ const users = [
     creditCard: "36215661618936",
   },
   {
-    id: 10,
     firstName: "Marve",
     lastName: "Singyard",
     email: "msingyard9@taobao.com",
@@ -370,7 +330,6 @@ const users = [
     creditCard: "676743033920616471",
   },
   {
-    id: 11,
     firstName: "Tripp",
     lastName: "Vasey",
     email: "tvaseya@pagesperso-orange.fr",
@@ -379,7 +338,6 @@ const users = [
     creditCard: "3566326342490850",
   },
   {
-    id: 12,
     firstName: "Eleanor",
     lastName: "Igoe",
     email: "eigoeb@bluehost.com",
@@ -388,7 +346,6 @@ const users = [
     creditCard: "5519215249540870",
   },
   {
-    id: 13,
     firstName: "Thurston",
     lastName: "Charsley",
     email: "tcharsleyc@chronoengine.com",
@@ -397,7 +354,6 @@ const users = [
     creditCard: "3546524213168432",
   },
   {
-    id: 14,
     firstName: "Ashien",
     lastName: "Avraham",
     email: "aavrahamd@washington.edu",
@@ -406,7 +362,6 @@ const users = [
     creditCard: "3589227318519974",
   },
   {
-    id: 15,
     firstName: "Gilemette",
     lastName: "Hadcroft",
     email: "ghadcrofte@admin.ch",
@@ -415,7 +370,6 @@ const users = [
     creditCard: "30394033367864",
   },
   {
-    id: 16,
     firstName: "Belinda",
     lastName: "Santer",
     email: "bsanterf@google.de",
@@ -424,7 +378,6 @@ const users = [
     creditCard: "5412925549721842",
   },
   {
-    id: 17,
     firstName: "Meta",
     lastName: "Dunkerly",
     email: "mdunkerlyg@hubpages.com",
@@ -433,7 +386,6 @@ const users = [
     creditCard: "3557866914492769",
   },
   {
-    id: 18,
     firstName: "Shep",
     lastName: "Nobes",
     email: "snobesh@myspace.com",
@@ -442,7 +394,6 @@ const users = [
     creditCard: "5048371044663407",
   },
   {
-    id: 19,
     firstName: "Cristina",
     lastName: "Tombling",
     email: "ctomblingi@github.io",
@@ -451,7 +402,6 @@ const users = [
     creditCard: "374283814021879",
   },
   {
-    id: 20,
     firstName: "Berget",
     lastName: "Rainard",
     email: "brainardj@dedecms.com",
@@ -460,7 +410,6 @@ const users = [
     creditCard: "3559410320074750",
   },
   {
-    id: 21,
     firstName: "Janella",
     lastName: "Logsdale",
     email: "jlogsdalek@ucoz.com",
@@ -469,7 +418,6 @@ const users = [
     creditCard: "3556224052982061",
   },
   {
-    id: 22,
     firstName: "Jaime",
     lastName: "Quinlan",
     email: "jquinlanl@google.co.uk",
@@ -478,7 +426,6 @@ const users = [
     creditCard: "3537994524894912",
   },
   {
-    id: 23,
     firstName: "Alisun",
     lastName: "De Vuyst",
     email: "adevuystm@dagondesign.com",
@@ -487,7 +434,6 @@ const users = [
     creditCard: "3536014665687073",
   },
   {
-    id: 24,
     firstName: "Kacy",
     lastName: "Gartery",
     email: "kgarteryn@sohu.com",
@@ -496,7 +442,6 @@ const users = [
     creditCard: "201523700563537",
   },
   {
-    id: 25,
     firstName: "Codie",
     lastName: "Frantz",
     email: "cfrantzo@usa.gov",
@@ -505,7 +450,6 @@ const users = [
     creditCard: "6759571749375366",
   },
   {
-    id: 26,
     firstName: "Mead",
     lastName: "Clapson",
     email: "mclapsonp@squarespace.com",
@@ -514,7 +458,6 @@ const users = [
     creditCard: "6331105523200685",
   },
   {
-    id: 27,
     firstName: "Essie",
     lastName: "Posselt",
     email: "eposseltq@jigsy.com",
@@ -523,7 +466,6 @@ const users = [
     creditCard: "374622234064896",
   },
   {
-    id: 28,
     firstName: "Milton",
     lastName: "Paolo",
     email: "mpaolor@wordpress.com",
@@ -532,7 +474,6 @@ const users = [
     creditCard: "6399825394724641",
   },
   {
-    id: 29,
     firstName: "Kalvin",
     lastName: "Disman",
     email: "kdismans@yelp.com",
@@ -541,7 +482,6 @@ const users = [
     creditCard: "3579532525940216",
   },
   {
-    id: 30,
     firstName: "Delly",
     lastName: "Pidduck",
     email: "dpidduckt@squidoo.com",
