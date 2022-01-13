@@ -1,9 +1,9 @@
 "use strict";
 
 const { db } = require("../server/db");
-const User = require("../server/db/models/user");
-const Plant = require("../server/db/models/plant");
-const Cart = require("../server/db/models/cart")
+const {
+  models: { User, Plant, Order },
+} = require("../server/db");
 
 //seed dummy data
 const plants = [
@@ -624,11 +624,11 @@ const users = [
   },
 ];
 
-const carts = [
+const orders = [
   {
     totalPrice: "1000",
-    transactionComplete: true
-  }
+    transactionComplete: true,
+  },
 ];
 
 const seed = async () => {
@@ -639,7 +639,7 @@ const seed = async () => {
 
     await Plant.bulkCreate(plants);
 
-    await Cart.bulkCreate(carts);
+    await Order.bulkCreate(orders);
   } catch (err) {
     console.log(err);
   }
