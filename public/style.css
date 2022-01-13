@@ -67,5 +67,127 @@ form div {
   margin: 1em;
   /* display: inline-block; */
 }
+/* cart nav  */
+.cart__link {
+  background: rgb(65, 68, 68);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.cartlogo__badge {
+  background: #f4f4f4;
+  border-radius: 70%;
+  margin-left: 10px;
+  color: #171717;
+  font-size: 1.3rem;
 
 
+
+}
+/* single page add to cart info */
+.right__info > p {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.2)
+}
+
+.center{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.right__info {
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+
+  margin-top: 50px;
+
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+}
+
+.dropdown {
+  width: 50px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+/* cartItem css */
+.cartitem {
+
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 8px;
+  /* margin-right: 50px; */
+  display: grid;
+  /* flex-direction: column;
+  align-items: center; */
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+  gap: 8px;
+  background: #fff;
+  border: 2px;
+  place-items:center;
+}
+
+.cartitem__name {
+  text-decoration: none;
+  color: rgba(0,0,0, 0.4);
+}
+
+.cartitem__select {
+  padding: 10px 17px;
+}
+.cartitem__deleteBtn {
+  padding: 10px 17px;
+  color: red;
+  background: 1px solid #171717;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+}
+
+/* cart screen */
+.cartscreen {
+  display: flex;
+  max-width: 1300px;
+  margin: 2rem auto;
+
+}
+.cartscreen h2 {
+  margin-bottom: 1rem;
+}
+.cartscreen__left {
+  flex: 0.7;
+  margin-right: 10rem;
+  background-color: transparent;
+  padding: 1rem;
+}
+
+.cartscreen__right {
+  flex: 0.3;
+  margin-top: 3rem;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  height: fit-content;
+
+}
+
+.cartscreen_right div {
+  border-bottom: 1px solid rgba(0,0,0, 0.2);
+  padding: 1rem;
+}
+.cartscren__right div:last-child {
+  border: none;
+
+}
+.cartscreen__info p{
+  padding: 8px;
+
+}
+.cartitem__deleteBtn:hover,
+.cartitem__deleteBtn:focus,
+.cartitem__deleteBtn:active {
+  transform: scale(1.2)
+}
