@@ -25,10 +25,8 @@ class AllPlants extends React.Component {
   render() {
     const { filtered } = this.state;
     const plants = this.props.plants.filter((plant) => {
-      if (filtered === "All") return plant;
-      if (filtered === "Easy") return plant.easeOfCare === "Easy";
-      if (filtered === "Medium") return plant.easeOfCare === 'Medium';
-      if (filtered === "Hard") return plant.easeOfCare === "Hard";
+      if (filtered != "All") return plant.easeOfCare === filtered;
+      return plant;
     });
     if (plants.length === 0) {
       return <h1>Loading...</h1>;
