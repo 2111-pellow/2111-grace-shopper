@@ -5,17 +5,47 @@ import { fetchPlants } from "../store/allPlants";
 import { MdAddShoppingCart } from "react-icons/md";
 
 class AllPlants extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      filtered: "All",
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
   componentDidMount() {
     this.props.fetchPlants();
   }
+
+  handleChange(e) {
+    this.setState({
+      filtered: e.target.value,
+    });
+  }
+
   render() {
-    if (this.props.plants.length === 0) {
+    const { filtered } = this.state;
+    const plants = this.props.plants.filter((plant) => {
+      if (filtered != "All") return plant.easeOfCare === filtered;
+      return plant;
+    });
+    if (plants.length === 0) {
       return <h1>Loading...</h1>;
     } else {
       return (
         <div>
           <div>
-            {this.props.plants.map((singlePlant) => {
+            <label htmlFor="filter">Ease of Care:</label>
+            <select
+              name="filter"
+              value={filtered}
+              onChange={this.handleChange}
+            >
+              <option>All</option>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+            {plants.map((singlePlant) => {
               return (
                 <div key={singlePlant.id}>
                   <b>
