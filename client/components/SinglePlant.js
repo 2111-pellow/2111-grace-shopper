@@ -30,15 +30,22 @@ class SinglePlant extends React.Component {
             </p>
             <p>
               Quantity
-              <select className="dropdown">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
+              <input
+                type="number"
+                name="points"
+                className="quantity"
+                step="1"
+                min="1"
+                max={plant.quantity}
+                placeholder="1"
+                onChange={(event) => this.changePlantQuantity(plant.id, event)}
+                style={{ width: "130px" }}
+              />
             </p>
             <p>
-              <button type="button">Add To {<MdAddShoppingCart />}</button>
+              <Link to="/cart">
+                <button type="button">Add To {<MdAddShoppingCart />}</button>
+              </Link>
             </p>
           </div>
         </div>
