@@ -32,10 +32,21 @@ router.get("/plants", async (req, res, next) => {
     next(error);
   }
 });
+
+// GET: get specific order w order_plant through table
+
 // api/orders/:orderId
 router.get("/:orderId", async (req, res, next) => {
   try {
-    const order = await Order.findByPk(req.params.orderId);
+    const orderId = req.params.orderId;
+    const order = await Order.findOne({
+      where: {
+        id: orderId
+      },
+      include: {
+        model: Plant
+      }
+    });
     if (!order) {
       res.status(404).send("Sorry this order does not exist!");
     } else {
