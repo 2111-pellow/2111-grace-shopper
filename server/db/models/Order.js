@@ -10,11 +10,15 @@ const Order = db.define("order", {
   transactionComplete: {
     type: Sequelize.BOOLEAN,
   },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0,
+      notEmpty: true,
+    },
+    defaultValue: 0,
+  },
 });
-
-// const Order_Plant = db.define("Order_Plants", {
-//   plant_price: { type: Sequelize.DECIMAL(4, 2) },
-//   quantity: { type: Sequelize.INTEGER },
-// });
 
 module.exports = Order;

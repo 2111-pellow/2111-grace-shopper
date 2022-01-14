@@ -31,7 +31,7 @@ const Plant = db.define("plant", {
       notEmpty: true,
     },
   },
-  quantity: {
+  stock: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
