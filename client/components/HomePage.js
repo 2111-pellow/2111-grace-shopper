@@ -1,12 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GiMonsteraLeaf } from "react-icons/gi";
+import { connect } from "react-redux";
+
 /**
  * COMPONENT
  */
-const HomePage = () => {
+const HomePage = (props) => {
+  const {firstName, lastName, isLoggedIn} = props
+
   return (
     <div>
+     { isLoggedIn ?
+    (  <div>
+      <h3>Welcome, {firstName} {lastName}!</h3>
+    </div> ):
+    (null)
+    }
       <h1>
         {" "}
         {<GiMonsteraLeaf style={{ color: "green" }} />} The World of Decorative
@@ -49,4 +59,12 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const mapState = state => {
+  return {
+    firstName: state.auth.firstName,
+    lastName: state.auth.lastName,
+    isLoggedIn: !!state.auth.id,
+  }
+}
+
+export default connect(mapState)(HomePage);

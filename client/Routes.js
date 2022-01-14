@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
+import { Login } from "./components/AuthFormLogIn";
+import { Signup } from "./components/AuthForm";
 import { me } from "./store";
 import SinglePlant from "./components/SinglePlant";
 import AboutUs from "./components/AboutUs";
 import AllPlants from "./components/AllPlants";
 import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
+import SingleUserInfo from "./components/SingleUserInfo"
 
 /**
  * COMPONENT
@@ -24,13 +25,9 @@ class Routes extends Component {
     return (
       <div>
         {isLoggedIn ? (
-          // <Switch>
-          //   <Route path="/home" component={Home} />
-          //   <Redirect to="/home" />
-          // </Switch>
           <Switch>
-            {/* <Route exact path="/" component={Login} /> */}
-            <Route exact path="/" component={HomePage} />
+            <Route path="/" component={HomePage} />
+            <Route path="/singleuserinfo" component = {SingleUserInfo}/>
             <Route exact path="/plants/:plantId" component={SinglePlant} />
             <Route exact path="/plants" component={AllPlants} />
             <Route path="/aboutUs" component={AboutUs} />
@@ -38,11 +35,9 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
-            {/* <Route exact path="/" component={Login} /> */}
             <Route exact path="/" component={HomePage} />
             <Route exact path="/plants/:plantId" component={SinglePlant} />
             <Route exact path="/plants" component={AllPlants} />
-
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/aboutUs" component={AboutUs} />
