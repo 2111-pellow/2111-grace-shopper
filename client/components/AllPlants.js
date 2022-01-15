@@ -8,11 +8,13 @@ import { MdAddShoppingCart } from "react-icons/md";
 class AllPlants extends React.Component {
   constructor() {
     super();
+    this.addPlantsToCart = this.addPlantsToCart.bind(this)
     this.state = {
       filtered: "All",
+      plantId: ""
     };
     this.handleChange = this.handleChange.bind(this)
-    this.addToCart = this.addToCart.bind(this);
+    this.addPlantsToCart = this.addPlantsToCart.bind(this);
   }
 
   componentDidMount() {
@@ -24,10 +26,14 @@ class AllPlants extends React.Component {
       filtered: e.target.value,
     });
   }
-  addToCart(plant){
-    this.props.addToCart(plant)
-    console.log(this.props)
-  }
+  addPlantsToCart(e) {
+    this.setState({
+      plantId: e.target.value,
+    });
+    const cart = parseInt(localStorage.getItem(this.props.match.params.plantId));
+    const newCart = cart + 1;
+    cart ? localStorage.setItem(this.props.match.params.plantId, newCart) : localStorage.setItem(this.props.match.params.plantId, 1);
+    }
 
   render() {
     const { filtered } = this.state;
@@ -61,7 +67,7 @@ class AllPlants extends React.Component {
                     </Link>
                   </b>
 
-                  <button type="button" onClick={()=> this.addToCart(singlePlant.id)}>{<MdAddShoppingCart />}</button>
+                  <button type="button" onClick={this.addPlantsToCart}>Add To {<MdAddShoppingCart />}</button>
 
                   <div>
                     <Link to={`/plants/${singlePlant.id}`}>

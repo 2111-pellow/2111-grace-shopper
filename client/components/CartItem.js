@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 
 
 class CartItem extends React.Component {
-  componentDidMount() {
-    this.props.getSinglePlant(this.props.match.params.plantId);
-  }
   render(){
-console.log(this.props)
   return (
     <div>{}</div>
     // <div className="cartitem">
@@ -33,7 +29,7 @@ console.log(this.props)
     //   </button>
     // </div>
   );
-};
+}
 }
 
 export default CartItem;

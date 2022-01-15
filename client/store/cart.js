@@ -16,7 +16,7 @@ export const addToOrder = (nextOrderItem) => ({
 export const addToOrderThunk = (plantId) => {
   return async (dispatch) => {
         try {
-          const { data: orderItem } = await axios.get(`/api/plants/${plantId}`);
+          const { data: orderItem } = await axios.get(`/api/plants/${plantId}`, );
           dispatch(addToOrder(orderItem));
         } catch (error) {
           console.log("ADD TO ORDER THUNK ERROR");
