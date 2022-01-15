@@ -7,12 +7,14 @@ import auth from './auth'
 import plantsReducer from "./allPlants";
 import  singlePlantReducer  from "./singlePlant"
 import  singleUserReducer  from "./singleUser"
+import cartReducer from "./cart"
 
 const reducer = combineReducers({
   auth,
   singlePlantReducer,
   plants: plantsReducer,
-  singleUserReducer 
+  singleUserReducer,
+  cartReducer
 });
 
 const middleware = composeWithDevTools(

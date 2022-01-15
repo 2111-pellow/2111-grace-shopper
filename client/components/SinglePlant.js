@@ -3,14 +3,23 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSinglePlantThunk } from "../store/singlePlant";
 import { MdAddShoppingCart } from "react-icons/md";
+import { addToCartThunk } from '../store/cart'
 
 class SinglePlant extends React.Component {
+  constructor(props){
+    super(props)
+    this.addToCart = this.addToCart.bind(this)
+  }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
-    console.log(this.props);
   }
   handleSubmit(e) {
     e.preventDefault();
+  }
+
+  addToCart(plant){
+    this.props.addToCart(plant)
+    console.log(this.props)
   }
 
   render() {
@@ -36,16 +45,16 @@ class SinglePlant extends React.Component {
                 className="quantity"
                 step="1"
                 min="1"
-                max={plant.quantity}
+                max={plant.stock}
                 placeholder="1"
                 onChange={(event) => this.changePlantQuantity(plant.id, event)}
                 style={{ width: "130px" }}
               />
             </p>
             <p>
-              <Link to="/cart">
-                <button type="button">Add To {<MdAddShoppingCart />}</button>
-              </Link>
+              {/* <Link to="/cart"> */}
+                <button type="button" onClick={()=> this.addToCart(plant.id)}>Add To {<MdAddShoppingCart />}</button>
+              {/* </Link> */}
             </p>
           </div>
         </div>
@@ -57,12 +66,13 @@ class SinglePlant extends React.Component {
 const mapState = (state) => {
   return {
     plant: state.singlePlantReducer,
-    //user: state.singleUserReducer
+    cart: state.cartReducer
   };
 };
 
 const mapDispatch = (dispatch) => ({
   getSinglePlant: (plantId) => dispatch(getSinglePlantThunk(plantId)),
+  addToCart: (plantId) => dispatch(addToCartThunk(plantId)),
 });
 
 export default connect(mapState, mapDispatch)(SinglePlant);

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPlants } from "../store/allPlants";
+import { addToCartThunk } from '../store/cart'
 import { MdAddShoppingCart } from "react-icons/md";
 
 class AllPlants extends React.Component {
@@ -10,8 +11,10 @@ class AllPlants extends React.Component {
     this.state = {
       filtered: "All",
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.addToCart = this.addToCart.bind(this);
   }
+
   componentDidMount() {
     this.props.fetchPlants();
   }
@@ -20,6 +23,10 @@ class AllPlants extends React.Component {
     this.setState({
       filtered: e.target.value,
     });
+  }
+  addToCart(plant){
+    this.props.addToCart(plant)
+    console.log(this.props)
   }
 
   render() {
@@ -54,7 +61,7 @@ class AllPlants extends React.Component {
                     </Link>
                   </b>
 
-                  <button type="submit">{<MdAddShoppingCart />}</button>
+                  <button type="button" onClick={()=> this.addToCart(singlePlant.id)}>{<MdAddShoppingCart />}</button>
 
                   <div>
                     <Link to={`/plants/${singlePlant.id}`}>
@@ -84,10 +91,9 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
-  return {
+const mapDispatch = (dispatch) => ({
     fetchPlants: () => dispatch(fetchPlants()),
-  };
-};
+    addToCart: (plantId) => dispatch(addToCartThunk(plantId))
+});
 
 export default connect(mapState, mapDispatch)(AllPlants);
