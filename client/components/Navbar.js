@@ -19,7 +19,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-              <span className="cartlogo__badge">0</span>
+              <span className="cartlogo__badge"></span>
             </span>
           </Link>
           <a href="#" onClick={handleClick}>
@@ -53,6 +53,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+
   };
 };
 

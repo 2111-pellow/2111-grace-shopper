@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
+
 const Plant = db.define("plant", {
   plant_name: {
     type: Sequelize.STRING,
@@ -31,7 +32,7 @@ const Plant = db.define("plant", {
       notEmpty: true,
     },
   },
-  quantity: {
+  stock: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
@@ -41,5 +42,4 @@ const Plant = db.define("plant", {
     defaultValue: 25,
   },
 });
-
 module.exports = Plant;

@@ -16,7 +16,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 98.0,
-    quantity: 100,
+    stock: 100,
   },
   {
     plant_name: "Areca Palm",
@@ -26,7 +26,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 41.94,
-    quantity: 77,
+    stock: 77,
   },
   {
     plant_name: "Boston Fern",
@@ -36,7 +36,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Easy",
     price: 17.37,
-    quantity: 32,
+    stock: 32,
   },
   {
     plant_name: "Cast Iron Plant",
@@ -47,7 +47,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Medium",
     price: 37.46,
-    quantity: 47,
+    stock: 47,
   },
   {
     plant_name: "Canary Date Palm",
@@ -57,7 +57,7 @@ const plants = [
     category: "House Plant",
     easeOfCare: "Medium",
     price: 40.31,
-    quantity: 360,
+    stock: 360,
   },
   {
     plant_name: "Amaryllis",
@@ -68,7 +68,7 @@ const plants = [
     category: "Flowers",
     easeOfCare: "Easy",
     price: 69.68,
-    quantity: 77,
+    stock: 77,
   },
   {
     plant_name: "Bird of Paradise",
@@ -79,7 +79,7 @@ const plants = [
     category: "Flowers",
     easeOfCare: "Easy",
     price: 87.58,
-    quantity: 8,
+    stock: 8,
   },
   {
     plant_name: "Blushing Bromeliad",
@@ -656,19 +656,19 @@ const orders = [
 const orderPlants = [
   {
     plant_price: 98,
-    quantity: 4,
+    stock: 4,
     orderId: 4,
     plantId: 1
   },
   {
     plant_price: 34,
-    quantity: 1,
+    stock: 1,
     orderId: 2,
     plantId: 20
   },
   {
     plant_price: 20,
-    quantity: 1,
+    stock: 1,
     orderId: 1,
     plantId: 3
   }

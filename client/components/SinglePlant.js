@@ -3,14 +3,23 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSinglePlantThunk } from "../store/singlePlant";
 import { MdAddShoppingCart } from "react-icons/md";
+import { addToOrderThunk } from '../store/cart'
 
 class SinglePlant extends React.Component {
+  constructor(props){
+    super(props)
+    this.addToOrder = this.addToOrder.bind(this)
+  }
   componentDidMount() {
-    this.props.getSinglePlant(this.props.match.params.plantId);
-    console.log(this.props);
+    this.props.getSingleOrder(this.props.match.params.plantId);
   }
   handleSubmit(e) {
     e.preventDefault();
+  }
+
+  addToOrder(plant){
+    this.props.addToOrder(plant)
+    console.log(this.props)
   }
 
   render() {
@@ -36,16 +45,16 @@ class SinglePlant extends React.Component {
                 className="quantity"
                 step="1"
                 min="1"
-                max={plant.quantity}
+                max={plant.stock}
                 placeholder="1"
                 onChange={(event) => this.changePlantQuantity(plant.id, event)}
                 style={{ width: "130px" }}
               />
             </p>
             <p>
-              <Link to="/cart">
-                <button type="button">Add To {<MdAddShoppingCart />}</button>
-              </Link>
+              {/* <Link to="/cart"> */}
+                <button type="button" onClick={()=> this.addToOrder(plant.id)}>Add To {<MdAddShoppingCart />}</button>
+              {/* </Link> */}
             </p>
           </div>
         </div>
@@ -57,12 +66,13 @@ class SinglePlant extends React.Component {
 const mapState = (state) => {
   return {
     plant: state.singlePlantReducer,
-    //user: state.singleUserReducer
+    cart: state.cartReducer
   };
 };
 
 const mapDispatch = (dispatch) => ({
   getSinglePlant: (plantId) => dispatch(getSinglePlantThunk(plantId)),
+  addToOrder: (plantId) => dispatch(addToOrderThunk(plantId)),
 });
 
 export default connect(mapState, mapDispatch)(SinglePlant);
