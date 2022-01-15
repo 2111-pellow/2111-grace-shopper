@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPlants } from "../store/allPlants";
-import { addToCartThunk } from '../store/cart'
+import { addToOrderThunk } from '../store/cart'
 import { MdAddShoppingCart } from "react-icons/md";
 
 class AllPlants extends React.Component {
@@ -93,7 +93,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => ({
     fetchPlants: () => dispatch(fetchPlants()),
-    addToCart: (plantId) => dispatch(addToCartThunk(plantId))
+    addToCart: (plantId) => dispatch(addToOrderThunk(plantId))
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);
