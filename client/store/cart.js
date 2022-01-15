@@ -13,7 +13,7 @@ export const addToOrder = (nextOrderItem) => ({
 });
 
 
-export const addToCartThunk = (plantId) => {
+export const addToOrderThunk = (plantId) => {
   return async (dispatch) => {
         try {
           const { data: orderItem } = await axios.get(`/api/plants/${plantId}`);
