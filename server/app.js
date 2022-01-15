@@ -2,6 +2,8 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+const dotenv = require('dotenv')
+dotenv.config()
 module.exports = app
 
 // logging middleware

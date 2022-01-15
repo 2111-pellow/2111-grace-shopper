@@ -1,5 +1,9 @@
 const router = require('express').Router()
 const { models: {User }} = require('../db')
+// const dotenv = require('dotenv')
+// dotenv.config()
+
+console.log(process.env)
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
