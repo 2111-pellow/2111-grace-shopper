@@ -11,7 +11,7 @@ class SinglePlant extends React.Component {
     this.addToOrder = this.addToOrder.bind(this)
   }
   componentDidMount() {
-    this.props.getSingleOrder(this.props.match.params.plantId);
+    this.props.getSinglePlant(this.props.match.params.plantId);
   }
   handleSubmit(e) {
     e.preventDefault();
