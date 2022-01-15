@@ -2,19 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPlants } from "../store/allPlants";
-import { addToOrderThunk } from '../store/cart'
+import { addToOrderThunk } from "../store/cart";
 import { MdAddShoppingCart } from "react-icons/md";
 
 class AllPlants extends React.Component {
   constructor() {
     super();
-    this.addPlantsToCart = this.addPlantsToCart.bind(this)
     this.state = {
       filtered: "All",
-      plantId: ""
     };
-    this.handleChange = this.handleChange.bind(this)
-    this.addPlantsToCart = this.addPlantsToCart.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,14 +23,7 @@ class AllPlants extends React.Component {
       filtered: e.target.value,
     });
   }
-  addPlantsToCart(e) {
-    this.setState({
-      plantId: e.target.value,
-    });
-    const cart = parseInt(localStorage.getItem(this.props.match.params.plantId));
-    const newCart = cart + 1;
-    cart ? localStorage.setItem(this.props.match.params.plantId, newCart) : localStorage.setItem(this.props.match.params.plantId, 1);
-    }
+
 
   render() {
     const { filtered } = this.state;
@@ -48,11 +38,7 @@ class AllPlants extends React.Component {
         <div>
           <div>
             <label htmlFor="filter">Ease of Care:</label>
-            <select
-              name="filter"
-              value={filtered}
-              onChange={this.handleChange}
-            >
+            <select name="filter" value={filtered} onChange={this.handleChange}>
               <option>All</option>
               <option>Easy</option>
               <option>Medium</option>
@@ -67,8 +53,29 @@ class AllPlants extends React.Component {
                     </Link>
                   </b>
 
-                  <button type="button" onClick={this.addPlantsToCart}>Add To {<MdAddShoppingCart />}</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const cart = window.localStorage.getItem(singlePlant.id);
+                      let plants = [];
+                      let plantDetails = {
+                        plant_id: singlePlant.id,
+                        plant_name: singlePlant.name,
+                        price: singlePlant.price,
+                      };
 
+                      if (cart) {
+                        plants = JSON.parse(cart);
+                      }
+                      plants.push(plantDetails);
+                      window.localStorage.setItem(
+                        singlePlant.id,
+                        JSON.stringify(plants)
+                      );
+                    }}
+                  >
+                    Add To {<MdAddShoppingCart />}
+                  </button>
                   <div>
                     <Link to={`/plants/${singlePlant.id}`}>
                       {
@@ -98,8 +105,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = (dispatch) => ({
-    fetchPlants: () => dispatch(fetchPlants()),
-    addToCart: (plantId) => dispatch(addToOrderThunk(plantId))
+  fetchPlants: () => dispatch(fetchPlants()),
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);
