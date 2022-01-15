@@ -9,9 +9,14 @@ class SinglePlant extends React.Component {
   constructor(props){
     super(props)
     this.addToOrder = this.addToOrder.bind(this)
+    this.addPlantsToCart = this.addPlantsToCart.bind(this)
+    this.state = {
+      plantId: this.props.match.params.plantId
+    }
   }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
+
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -19,11 +24,34 @@ class SinglePlant extends React.Component {
 
   addToOrder(plant){
     this.props.addToOrder(plant)
-    console.log(this.props)
   }
+
+addPlantsToCart() {
+  const cart = parseInt(localStorage.getItem(this.state.plantId));
+  const newCart = cart + 1;
+  cart ? localStorage.setItem(this.state.plantId, newCart) : localStorage.setItem(this.state.plantId, 1);
+
+//   const oldproduct = localStorage.getItem('products') ? localStorage.getItem('products') : "[]";
+//   const arrayproduct =  JSON.parse(oldproduct);
+//   let productsString = .products;
+//   let products = location.state
+
+//   arrayproduct.push(products);
+//   if(productsString){
+//       products = JSON.parse(productsString)
+//   }
+
+//   localStorage.setItem('products', JSON.stringify(arrayproduct));
+// }
+  }
+
+
 
   render() {
     let plant = this.props.plant || {};
+    if (plant === null) {
+      return <h1>Loading...</h1>;
+    } else {
     return (
       <div className="center">
         <div>{plant.plant_name}</div>
@@ -38,7 +66,7 @@ class SinglePlant extends React.Component {
               Price: <span>$ {plant.price}</span>
             </p>
             <p>
-              Quantity
+              Amount Currently In Stock:
               <input
                 type="number"
                 name="points"
@@ -53,7 +81,7 @@ class SinglePlant extends React.Component {
             </p>
             <p>
               {/* <Link to="/cart"> */}
-                <button type="button" onClick={()=> this.addToOrder(plant.id)}>Add To {<MdAddShoppingCart />}</button>
+                <button type="button" onClick={this.addPlantsToCart}>Add To {<MdAddShoppingCart />}</button>
               {/* </Link> */}
             </p>
           </div>
@@ -61,6 +89,7 @@ class SinglePlant extends React.Component {
       </div>
     );
   }
+}
 }
 
 const mapState = (state) => {
