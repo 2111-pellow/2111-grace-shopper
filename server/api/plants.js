@@ -24,4 +24,36 @@ router.get("/:plantId", async (req, res, next) => {
   }
 });
 
+//PUT api/plants/addPlant
+router.post('/addPlant', async(req, res, next) => {
+  try {
+    const newPlant = await Plant.create(req.body);
+    res.send(newPlant)
+  } catch (error){
+    next(error)
+  }
+})
+
+// PUT /api/plants/editPlant/:plantId
+router.put('/editPlant/:plantId', async (req, res, next) => {
+  try {
+    const plant = await Plant.findByPk(req.params.plantId);
+    const updated = await plant.update(req.body)
+    res.send(updated);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//DELETE /api/plants/:plantId
+router.delete('/:plantId', async(req, res, next) => {
+  try {
+    const plant = await Plant.findByPk(req.params.plantId);
+    await plant.destroy();
+    res.send(plant);
+  } catch (error){
+    next(error)
+  }
+})
+
 module.exports = router;
