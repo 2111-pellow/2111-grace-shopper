@@ -53,28 +53,30 @@ class SinglePlant extends React.Component {
                 />
               </p>
               <p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const cart = window.localStorage.getItem(plant.id);
-                    let plants = [];
-                    let plantDetails = {
-                      plant_id: plant.id,
-                      plant_name: plant.name,
-                      price: plant.price,
-                    };
-                    if (cart) {
-                      plants = JSON.parse(cart);
-                    }
-                    plants.push(plantDetails);
-                    window.localStorage.setItem(
-                      plant.id,
-                      JSON.stringify(plants)
-                    );
-                  }}
-                >
-                  Add To {<MdAddShoppingCart />}
-                </button>
+              <button
+                    type="button"
+                    onClick={() => {
+                      const cart = window.localStorage.getItem('cart');
+                      let plants = [];
+                      let plantDetails = {
+                        plant_id: plant.id,
+                        plant_name: plant.plant_name,
+                        ImageUrl: plant.imageUrl,
+                        price: plant.price,
+                      };
+
+                      if (cart) {
+                        plants = JSON.parse(cart);
+                      }
+                      plants.push(plantDetails);
+                      window.localStorage.setItem(
+                        'cart',
+                        JSON.stringify(plants)
+                      );
+                    }}
+                  >
+                    Add To {<MdAddShoppingCart />}
+                  </button>
               </p>
             </div>
           </div>

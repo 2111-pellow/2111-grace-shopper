@@ -37,7 +37,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-              <span className="cartlogo__badge">0</span>
+              {/* <span className="cartlogo__badge">{JSON.parse(Object.values(localStorage)).length}</span> add if/else statement cause it can't be null */}
             </span>
           </Link>
         </div>
