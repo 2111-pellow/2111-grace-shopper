@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchPlants } from "../store/allPlants";
+import { deletePlant, fetchPlants } from "../store/allPlants";
 import { addToOrderThunk } from "../store/cart";
 import { MdAddShoppingCart } from "react-icons/md";
+import { me } from '../store/auth'
 
 class AllPlants extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class AllPlants extends React.Component {
       filtered: "All",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.delete = this.delete.bind(this)
   }
 
   componentDidMount() {
@@ -24,8 +26,14 @@ class AllPlants extends React.Component {
     });
   }
 
+  delete(e) {
+    e.preventDefault();
+    this.props.deletePlant(e.target.value)
+  }
+
 
   render() {
+    console.log(this.props)
     const { filtered } = this.state;
     const plants = this.props.plants.filter((plant) => {
       if (filtered != "All")
@@ -90,6 +98,8 @@ class AllPlants extends React.Component {
                   </div>
 
                   <div>{`$${singlePlant.price}`}</div>
+                  {this.props.isAdmin ? <button type="button" onClick={this.delete} value={singlePlant.id}>Delete Plant</button> : null}
+
                 </div>
               );
             })}
@@ -104,11 +114,13 @@ const mapState = (state) => {
   return {
     plants: state.plants,
     isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.isAdmin
   };
 };
 
 const mapDispatch = (dispatch) => ({
   fetchPlants: () => dispatch(fetchPlants()),
+  deletePlant: (id) => dispatch(deletePlant(id))
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);
