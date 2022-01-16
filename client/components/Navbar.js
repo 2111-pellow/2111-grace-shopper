@@ -26,8 +26,12 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
           <Link to="/plants">Plants Room</Link>
           <Link to="/aboutUs">About Us</Link>
           <Link to="/cart" className="cart__link">
-          <i className="fas fa-shopping-cart"></i>
-          <span>Cart<span className="cartlogo__badge">0</span></span>
+
+            <i className="fas fa-shopping-cart"></i>
+            <span>
+              Cart
+              <span className="cartlogo__badge">{localStorage.length ? JSON.parse(localStorage.getItem('cart')).length : 0}</span>
+            </span>
           </Link>
       </div>
     );

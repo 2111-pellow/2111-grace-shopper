@@ -2,7 +2,8 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const axios = require("axios");
+const secret = require('../../../config/secrets.js');
+
 
 const SALT_ROUNDS = 5;
 
@@ -65,13 +66,16 @@ User.prototype.correctPassword = function (candidatePwd) {
 };
 
 User.prototype.generateToken = function () {
-  return jwt.sign({ id: this.id }, process.env.JWT);
+  console.log('SECRET', secret.jwtSecret, secret)
+  return jwt.sign({ id: this.id }, secret.jwtSecret);
 };
 
 /**
  * classMethods
  */
 User.authenticate = async function ({ email, password }) {
+  console.log('SECRET', secret.jwtSecret)
+
   const user = await this.findOne({ where: { email } });
   if (!user || !(await user.correctPassword(password))) {
     const error = Error("Incorrect username/password");
@@ -83,7 +87,7 @@ User.authenticate = async function ({ email, password }) {
 
 User.findByToken = async function (token) {
   try {
-    const { id } = await jwt.verify(token, process.env.JWT);
+    const { id } = await jwt.verify(token, secret.jwtSecret);
     const user = User.findByPk(id);
     if (!user) {
       throw "nooo";
