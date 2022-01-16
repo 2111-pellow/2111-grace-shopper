@@ -14,13 +14,15 @@ class Cart extends React.Component {
   render() {
       let totalPrice = 0
       let cartItems = JSON.parse(localStorage.getItem('cart'))
-      const price = (cartItems) =>{
-        for (let i=0; i < cartItems.length; i++){
-          totalPrice += parseInt(cartItems[i].price)
-        }
-        return totalPrice
+      if (!cartItems){
+     return <div>Your cart is empty</div>
+    } else {
+       const price = (cartItems) =>{
+      for (let i=0; i < cartItems.length; i++){
+        totalPrice += parseInt(cartItems[i].price)
       }
-  console.log(cartItems.ImageUrl)
+      return totalPrice
+    }
     return (
       <div>
       <div className="cartscreen">
@@ -51,6 +53,7 @@ class Cart extends React.Component {
 
     );
   }
+}
 }
 
 const mapState = (state) => {
