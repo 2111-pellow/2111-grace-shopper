@@ -11,3 +11,5 @@ export default class SingleUserInfo extends React.Component {
     )
   }
 }
+
+

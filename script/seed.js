@@ -341,6 +341,7 @@ const users = [
       "https://images.pexels.com/photos/3310695/pexels-photo-3310695.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     creditCard: "4844087180715467",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Maiga",
@@ -351,6 +352,7 @@ const users = [
       "https://images.pexels.com/photos/3981337/pexels-photo-3981337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "30356510277759",
     isAdmin: true,
+    isLoggedIn: true,
   },
   {
     firstName: "Etheline",
@@ -361,6 +363,7 @@ const users = [
       "https://images.pexels.com/photos/3671083/pexels-photo-3671083.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=12600",
     creditCard: "3557474566891576",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Kori",
@@ -371,6 +374,7 @@ const users = [
       "https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "56022106041440869",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Calhoun",
@@ -381,6 +385,7 @@ const users = [
       "https://images.pexels.com/photos/2741701/pexels-photo-2741701.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3543018002553295",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Guntar",
@@ -391,6 +396,7 @@ const users = [
       "https://images.pexels.com/photos/1933873/pexels-photo-1933873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3551452110394848",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Britt",
@@ -401,6 +407,7 @@ const users = [
       "https://images.pexels.com/photos/2755165/pexels-photo-2755165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3572512095378655",
     isAdmin: true,
+    isLoggedIn: true,
   },
   {
     firstName: "Sammy",
@@ -411,6 +418,7 @@ const users = [
       "https://images.pexels.com/photos/3283568/pexels-photo-3283568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "36215661618936",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Marve",
@@ -421,6 +429,7 @@ const users = [
       "https://images.pexels.com/photos/2846602/pexels-photo-2846602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "676743033920616471",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Tripp",
@@ -431,6 +440,7 @@ const users = [
       "https://images.pexels.com/photos/3186558/pexels-photo-3186558.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3566326342490850",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Eleanor",
@@ -441,6 +451,7 @@ const users = [
       "https://images.pexels.com/photos/2853198/pexels-photo-2853198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "5519215249540870",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Thurston",
@@ -451,6 +462,7 @@ const users = [
       "https://images.pexels.com/photos/3748221/pexels-photo-3748221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3546524213168432",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Ashien",
@@ -461,6 +473,7 @@ const users = [
       "https://images.pexels.com/photos/3220360/pexels-photo-3220360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3589227318519974",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Gilemette",
@@ -471,6 +484,7 @@ const users = [
       "https://images.pexels.com/photos/3438086/pexels-photo-3438086.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "30394033367864",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Belinda",
@@ -481,6 +495,7 @@ const users = [
       "https://images.pexels.com/photos/3533228/pexels-photo-3533228.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "5412925549721842",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Meta",
@@ -491,6 +506,7 @@ const users = [
       "https://images.pexels.com/photos/4063856/pexels-photo-4063856.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     creditCard: "3557866914492769",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Shep",
@@ -501,6 +517,7 @@ const users = [
       "https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "5048371044663407",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Cristina",
@@ -511,6 +528,7 @@ const users = [
       "https://images.pexels.com/photos/1840608/pexels-photo-1840608.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "374283814021879",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Berget",
@@ -521,6 +539,7 @@ const users = [
       "https://images.pexels.com/photos/5397723/pexels-photo-5397723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3559410320074750",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Janella",
@@ -531,6 +550,7 @@ const users = [
       "https://images.pexels.com/photos/5046546/pexels-photo-5046546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3556224052982061",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Jaime",
@@ -541,6 +561,7 @@ const users = [
       "https://images.pexels.com/photos/2530775/pexels-photo-2530775.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3537994524894912",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Alisun",
@@ -551,6 +572,7 @@ const users = [
       "https://images.pexels.com/photos/4662950/pexels-photo-4662950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "3536014665687073",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Kacy",
@@ -561,6 +583,7 @@ const users = [
       "https://images.pexels.com/photos/5034475/pexels-photo-5034475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "201523700563537",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Codie",
@@ -571,6 +594,7 @@ const users = [
       "https://images.pexels.com/photos/2703181/pexels-photo-2703181.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     creditCard: "6759571749375366",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Mead",
@@ -581,6 +605,7 @@ const users = [
       "https://images.pexels.com/photos/914472/pexels-photo-914472.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     creditCard: "6331105523200685",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Essie",
@@ -591,6 +616,7 @@ const users = [
       "https://images.pexels.com/photos/2552127/pexels-photo-2552127.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     creditCard: "374622234064896",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Milton",
@@ -601,6 +627,7 @@ const users = [
       "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     creditCard: "6399825394724641",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Kalvin",
@@ -611,6 +638,7 @@ const users = [
       "https://images.pexels.com/photos/1073097/pexels-photo-1073097.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/",
     creditCard: "3579532525940216",
     isAdmin: false,
+    isLoggedIn: true,
   },
   {
     firstName: "Delly",
@@ -621,6 +649,7 @@ const users = [
       "https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     creditCard: "3566927484544493",
     isAdmin: false,
+    isLoggedIn: true,
   },
 ];
 

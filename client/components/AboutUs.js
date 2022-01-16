@@ -1,13 +1,8 @@
 import React from "react"
-import { connect } from "react-redux";
-import { Link } from "react-router-dom"
-
-
 
 export default class AboutUs extends React.Component {
 
-
-  render(){
+  render() {
     return (
       <div>
         Do you ever feel like covid got you down?? That's why we built this store! Our mission is to help you green up your space and feel better. When you are stuck indoors quarantining maybe even get you some extra fresh air!

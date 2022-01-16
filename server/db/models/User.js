@@ -50,7 +50,7 @@ const User = db.define("user", {
   },
   isLoggedIn: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: true,
   },
 });
 

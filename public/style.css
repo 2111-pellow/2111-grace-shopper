@@ -41,12 +41,12 @@ label {
 
 
 nav {
-    align-items: center;
+    align-items: stretch;
     justify-content: space-evenly;
     flex-direction: row;
     color: black;
     display: flex;
-    padding: 20px;
+    padding: 10px;
     position: relative;
     background: inherit;
     border-radius: 30px;

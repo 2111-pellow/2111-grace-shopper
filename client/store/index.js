@@ -5,8 +5,8 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import plantsReducer from "./allPlants";
-import  singlePlantReducer  from "./singlePlant"
-import  singleUserReducer  from "./singleUser"
+import singlePlantReducer  from "./singlePlant"
+import singleUserReducer  from "./singleUser"
 import cartReducer from "./cart"
 
 const reducer = combineReducers({
