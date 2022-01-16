@@ -56,11 +56,12 @@ class AllPlants extends React.Component {
                   <button
                     type="button"
                     onClick={() => {
-                      const cart = window.localStorage.getItem(singlePlant.id);
+                      const cart = window.localStorage.getItem('cart');
                       let plants = [];
                       let plantDetails = {
                         plant_id: singlePlant.id,
-                        plant_name: singlePlant.name,
+                        plant_name: singlePlant.plant_name,
+                        ImageUrl: singlePlant.imageUrl,
                         price: singlePlant.price,
                       };
 
@@ -69,7 +70,7 @@ class AllPlants extends React.Component {
                       }
                       plants.push(plantDetails);
                       window.localStorage.setItem(
-                        singlePlant.id,
+                        'cart',
                         JSON.stringify(plants)
                       );
                     }}
