@@ -28,7 +28,8 @@ class AllPlants extends React.Component {
   render() {
     const { filtered } = this.state;
     const plants = this.props.plants.filter((plant) => {
-      if (filtered != "All") return plant.easeOfCare === filtered;
+      if (filtered != "All")
+      return plant.easeOfCare === filtered;
       return plant;
     });
     if (plants.length === 0) {
@@ -102,6 +103,7 @@ class AllPlants extends React.Component {
 const mapState = (state) => {
   return {
     plants: state.plants,
+    isLoggedIn: !!state.auth.id,
   };
 };
 

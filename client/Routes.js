@@ -9,7 +9,7 @@ import AboutUs from "./components/AboutUs";
 import AllPlants from "./components/AllPlants";
 import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
-import SingleUserInfo from "./components/SingleUserInfo"
+import SingleUserInfo from "./components/SingleUserInfo";
 
 /**
  * COMPONENT
@@ -21,27 +21,27 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-
+    console.log(this.props);
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/" component={HomePage} />
-            <Route path="/singleuserinfo" component = {SingleUserInfo}/>
+            <Route exact path="/" component={HomePage} />
             <Route exact path="/plants/:plantId" component={SinglePlant} />
             <Route exact path="/plants" component={AllPlants} />
             <Route path="/aboutUs" component={AboutUs} />
-            <Route path="/cart" component={Cart} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/singleuserinfo" component = {SingleUserInfo}/>
           </Switch>
         ) : (
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/plants/:plantId" component={SinglePlant} />
             <Route exact path="/plants" component={AllPlants} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
             <Route path="/aboutUs" component={AboutUs} />
-            <Route path="/cart" component={Cart} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
           </Switch>
         )}
       </div>
