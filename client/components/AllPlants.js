@@ -31,11 +31,10 @@ class AllPlants extends React.Component {
     this.props.deletePlant(e.target.value)
   }
 
-<<<<<<< HEAD
   add(e){
     e.preventDefault();
     this.props.deletePlant(e.target.value)
-=======
+  }
   addNewItem(plant_id, name, ImageUrl, price) {
     var items = JSON.parse(localStorage.getItem('cart')) || [];
     var item = items.find(item => item.name === name);
@@ -51,7 +50,6 @@ class AllPlants extends React.Component {
       })
     }
     localStorage.setItem('cart', JSON.stringify(items));
->>>>>>> 32237bd23ff8d8609435a716224d8c713a034e1a
   }
 
 
@@ -76,7 +74,8 @@ class AllPlants extends React.Component {
               <option>Medium</option>
               <option>Hard</option>
             </select>
-            <AddPlant/>
+            {this.props.isAdmin ? <AddPlant/> : null}
+
             {plants.map((singlePlant) => {
               return (
                 <div key={singlePlant.id}>

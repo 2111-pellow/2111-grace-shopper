@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchCampus, updateCampus, setCampus } from '../redux/singleCampus'
+import { getSinglePlant, getSinglePlantThunk, updatePlant } from "../store/singlePlant";
 
 
 class EditPlant extends React.Component {
@@ -19,23 +19,27 @@ class EditPlant extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if (prevProps.campus.id !== this.props.campus.id){
+    console.log(prevProps)
+    if (prevProps.plant.id !== this.props.plant.id){
       this.setState({
-        name: this.props.campus.name || '',
-        address: this.props.campus.address || '',
-        imageUrl: this.props.campus.imageUrl || '',
-        description: this.props.campus.description || ''
+        plant_name: this.props.plant.plant_name || '',
+        description: this.props.plant.description || '',
+        category: this.props.plant.category || '',
+        easeOfCare: this.props.plant.easeOfCare || '',
+        price: this.props.plant.price || '',
+        stock: this.props.plant.stock || '',
+
       })
     }
   }
 
   componentWillUnmount() {
-    this.props.clearCampus();
+    this.props.clearPlant();
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateCampus(this.props.campus.id, this.state);
+    this.props.updatePlant(this.props.plant.id, this.state);
   }
 
   handleChange(e){
@@ -45,26 +49,35 @@ class EditPlant extends React.Component {
   }
 
   render() {
-    const {name, address, description, imageUrl} = this.state;
+    console.log(this.props, 'PROPS IN EDITPLANT')
+    const {plant_name, description, category, easeOfCare, price, stock} = this.state;
     return (
       <div>
-        <h3>Edit Campus:</h3>
-        <form id='update-campus-form' onSubmit={this.handleSubmit}>
-          <div>
-            <label>Campus Name:</label>
-            <input type='text' name='name' value={name} onChange={this.handleChange} />
+        <h3>Edit Plant:</h3>
+        <form id='update-plant-form' onSubmit={this.handleSubmit}>
+        <div>
+            <label>Plant Name:</label>
+            <input type='text' name='plant_name' value={plant_name} onChange={this.handleChange} />
           </div>
           <div>
-            <label>Campus Address:</label>
-            <input type='text' name='address' value={address} onChange={this.handleChange} />
-          </div>
-          <div>
-            <label>Campus Image URL:</label>
-            <input type='text' name='imageUrl' value={imageUrl} onChange={this.handleChange} />
-          </div>
-          <div>
-            <label>Campus Description:</label>
+            <label>Description:</label>
             <input type='text' name='description' value={description} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label>Category:</label>
+            <input type='text' name='category' value={category} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label>Ease of Care:</label>
+            <input type='text' name='easeOfCare' value={easeOfCare} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label>Price:</label>
+            <input type='text' name='price' value={price} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label>Stock:</label>
+            <input type='text' name='stock' value={stock} onChange={this.handleChange} />
           </div>
         <button type='submit'>Submit</button>
        </form>
@@ -75,14 +88,15 @@ class EditPlant extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    plant: state.plant
+    plant: state.singlePlantReducer
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updatePlant: (plantId, editedPlant) => dispatch(updatePlant(plantId, editedPlant)),
-    clearCampus: () => dispatch(setCampus({}))
+    getPlant: (plantId) => dispatch(getSinglePlantThunk(plantId)),
+    clearPlant: () => dispatch(getSinglePlant({}))
 }
 }
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getSinglePlantThunk } from "../store/singlePlant";
 import { MdAddShoppingCart } from "react-icons/md";
 import { addToOrderThunk } from "../store/cart";
+import EditPlant from "./EditPlant";
 
 class SinglePlant extends React.Component {
   constructor(props) {
@@ -40,6 +41,8 @@ class SinglePlant extends React.Component {
     } else {
       return (
         <div className="center">
+          {this.props.isAdmin ? <EditPlant plant={this.props.plant}/> : null}
+
           <div>{plant.plant_name}</div>
           <img
             src={plant.imageUrl}
@@ -89,6 +92,7 @@ const mapState = (state) => {
   return {
     plant: state.singlePlantReducer,
     cart: state.cartReducer,
+    isAdmin: state.auth.isAdmin
   };
 };
 
