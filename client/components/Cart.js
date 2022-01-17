@@ -74,7 +74,7 @@ class Cart extends React.Component {
     return (
       <div>
       <div className="cartscreen">
-        <div className="cartscrgeen__left">
+        <div className="cartscreen__left">
           <h2>Your Shopping Cart</h2>
         </div>
           </div>
