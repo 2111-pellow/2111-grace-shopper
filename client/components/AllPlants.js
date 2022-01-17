@@ -11,15 +11,16 @@ class AllPlants extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filtered: "All",
+      //filtered: "All",
       offset: 0,
       plants: [],
       perPage: 10,
       currentPage: 0
-    };
+    }
     this.handleChange = this.handleChange.bind(this);
     this.delete = this.delete.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
+    this.addNewItem = this.addNewItem.bind(this)
   }
 
   componentDidMount() {
@@ -47,10 +48,27 @@ class AllPlants extends React.Component {
       });
   };
 
+  addNewItem(plant_id, name, ImageUrl, price) {
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (item) {
+      item.count = Number(item.count) + 1;
+    } else {
+      items.push({
+        plant_id,
+        name,
+        ImageUrl,
+        count: 1,
+        price
+      })
+    }
+    localStorage.setItem('cart', JSON.stringify(items));
+  }
+
   receivedData() {
-              const postData =
-                this.props.plants.slice(this.state.offset, this.state.offset + this.state.perPage).map(singlePlant => { return (
-                <li key={singlePlant.id}>
+              const plants = this.props.plants;
+              const postData = plants.slice(this.state.offset, this.state.offset + this.state.perPage).map(singlePlant => { return (
+                <div key={singlePlant.id}>
                   <div className="product">
                   <Link to={`/plants/${singlePlant.id}`}>
                   {<img src={singlePlant.imageUrl} style={{ width: "200px", height: "200px"}}/>}
@@ -60,48 +78,34 @@ class AllPlants extends React.Component {
                     <Link to={`/plants/${singlePlant.id}`} style={{ color: "black" }}>{singlePlant.plant_name}</Link>
                   </b>
                   </div>
-                  <div className="product-price">
-                  <div>{`$${singlePlant.price}`}</div>
-                  <button className="add to cart" style={{ color: "black" }} type="button" onClick={() => {
-                      const cart = window.localStorage.getItem('cart');
-                      let plants = [];
-                      let plantDetails = {
-                        plant_id: singlePlant.id,
-                        plant_name: singlePlant.plant_name,
-                        ImageUrl: singlePlant.imageUrl,
-                        price: singlePlant.price,
-                      };
-                      if (cart) {
-                        plants = JSON.parse(cart);
-                      }
-                      plants.push(plantDetails);
-                      window.localStorage.setItem(
-                        'cart',
-                        JSON.stringify(plants)
-                      );}}>Add To Cart{<MdAddShoppingCart />}
+                  <button className="add to cart"
+                    type="button"
+                    onClick={() => {this.addNewItem(singlePlant.id, singlePlant.plant_name, singlePlant.imageUrl,singlePlant.price)}}
+                  >
+                    Add To {<MdAddShoppingCart />}
                   </button>
-                  </div>
+                  <div>{`$${singlePlant.price}`}</div>
                 {this.props.isAdmin ? <button type="button" onClick={this.delete} value ={singlePlant.id}>Delete Plant</button> : null}
                 </div>
-                </li>
+                </div>
               )})
               this.setState({
-                pageCount: 9, postData})
+                pageCount: Math.ceil(plants.length/this.state.perPage), postData})
             }
 
   render() {
-    const { filtered } = this.state;
-    const plants = this.props.plants.filter((plant) => {
-      if (filtered != "All")
-      return plant.easeOfCare === filtered;
-      return plant;
-    });
-    // if (plants.length === 0) {
-    //   return <h1>Loading...</h1>;
-    // } else {
+    // const { filtered } = this.state;
+    // const plants = this.props.plants.filter((plant) => {
+    //   if (filtered != "All")
+    //   return plant.easeOfCare === filtered;
+    //   return plant;
+    // });
+    const plants = this.props.plants;
+    if (plants === []) {"out of stock"}
+      else {
       return (
         <div>
-            <div>
+            {/* <div>
             <label htmlFor="filter">Ease of Care:</label>
             <select name="filter" value={filtered} onChange={this.handleChange}>
               <option>All</option>
@@ -109,7 +113,7 @@ class AllPlants extends React.Component {
               <option>Medium</option>
               <option>Hard</option>
             </select>
-            </div>
+            </div> */}
             {this.state.postData}
             <ReactPaginate
               previousLabel = {"Previous"}
@@ -123,6 +127,7 @@ class AllPlants extends React.Component {
               activeClassName={"active"}/>
         </div>
       );
+          }
     }
   }
 

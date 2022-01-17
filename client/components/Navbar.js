@@ -30,13 +30,14 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-              <span className="cartlogo__badge">{localStorage.length ? JSON.parse(localStorage.getItem('cart')).length : 0}</span>
+              {/* <span className="cartlogo__badge">{localStorage.length ? JSON.parse(localStorage.getItem('cart')).length : 0}</span> */}
             </span>
           </Link>
       </div>
     );
-
+    console.log("rendering NavBar");
     return (
+
       <div>
       <Link to="/" style={{ color: "black" }}><h1>The Greenhouse</h1></Link>
       <nav>

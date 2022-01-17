@@ -10,6 +10,7 @@ import AllPlants from "./components/AllPlants";
 import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
 import SingleUserInfo from "./components/SingleUserInfo";
+import { fetchPlants } from "./store/allPlants";
 
 /**
  * COMPONENT
@@ -17,9 +18,12 @@ import SingleUserInfo from "./components/SingleUserInfo";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+    this.props.fetchPlants();
   }
 
   render() {
+    console.log("rendering routes")
+    console.log("this is routes props", this.props);
     const { isLoggedIn } = this.props;
     return (
       <div>
@@ -61,9 +65,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData() {
-      dispatch(me());
-    },
+    loadInitialData() { dispatch(me());},
+    fetchPlants: () => dispatch(fetchPlants()),
   };
 };
 
