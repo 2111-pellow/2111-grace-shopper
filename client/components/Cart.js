@@ -7,27 +7,34 @@ import addToCartThunk from "../store/cart"
 class Cart extends React.Component {
   constructor(props){
     super(props)
-    this.decreaseCartQuantity = this.decreaseCartQuantity.bind(this)
-    this.increaseCartQuantity = this.increaseCartQuantity.bind(this)
+    this.state = {
+      cartItems: JSON.parse(localStorage.getItem('cart')) || [],
+      totalCartPrice: this.price(JSON.parse(localStorage.getItem('cart')))
+    }
+    this.changeCartQuantity = this.changeCartQuantity.bind(this)
     this.removeCartItem = this.removeCartItem.bind(this)
+    this.price - this.price.bind(this)
   }
-  removeCartItem(name){
+  removeCartItem(plant_id){
     var items = JSON.parse(localStorage.getItem('cart')) || [];
-    var item = items.find(item => item.name === name);
+    var item = items.find(item => item.plant_id === plant_id);
     if (items.length === 1){
-      window.localStorage.clear()}
+      window.localStorage.clear()
+      this.setState({totalCartPrice: 0})
+    }
     else if (item) {
       let index = items.indexOf(item)
-      console.log(index)
-      items = items.splice(index, 1)
+      items.splice(index, 1)
       localStorage.setItem('cart', JSON.stringify(items))
+      let price = this.price(JSON.parse(localStorage.getItem('cart')))
+      this.setState({cartItems: items, totalCartPrice: price})
     }
   }
-  decreaseCartQuantity(plant_id, name, ImageUrl, price) {
+  changeCartQuantity(plant_id, name, ImageUrl, price, num) {
     var items = JSON.parse(localStorage.getItem('cart')) || [];
     var item = items.find(item => item.name === name);
     if (item) {
-      item.count = Number(item.count) - 1;
+      item.count = Number(item.count) + num;
     } else {
       items.push({
         plant_id,
@@ -37,40 +44,24 @@ class Cart extends React.Component {
         price
       })
     }
-    localStorage.setItem('cart', JSON.stringify(items));
+    localStorage.setItem('cart', JSON.stringify(items))
+    price = this.price(JSON.parse(localStorage.getItem('cart')))
+    this.setState({cartItems: items, totalCartPrice: price});
   }
 
-  increaseCartQuantity(plant_id, name, ImageUrl, price) {
-    console.log(name)
-    var items = JSON.parse(localStorage.getItem('cart')) || [];
-    var item = items.find(item => item.name === name);
-    if (item) {
-      item.count = Number(item.count) + 1;
-    } else {
-      items.push({
-        plant_id,
-        name,
-        ImageUrl,
-        count: 1,
-        price
-      })
+  price(cartItems){
+    let totalPrice = 0
+    for (let i=0; i < cartItems.length; i++){
+      totalPrice = Number(cartItems[i].price) * Number(cartItems[i].count)
     }
-    localStorage.setItem('cart', JSON.stringify(items));
+   return totalPrice = totalPrice.toFixed(2)
   }
 
   render() {
-      let totalPrice = 0
       let cartItems = JSON.parse(localStorage.getItem('cart'))
       if (!cartItems){
      return <div>Your cart is empty</div>
-    } else {
-       const price = (cartItems) =>{
-      for (let i=0; i < cartItems.length; i++){
-        totalPrice += Number(cartItems[i].price)
-      }
-      return totalPrice
-    }
-    let PRICE = price(cartItems).toFixed(2)
+     } else {
     return (
       <div>
       <div className="cartscreen">
@@ -87,20 +78,21 @@ class Cart extends React.Component {
             <img src={plant.ImageUrl} style={{ width: "200px", height: "200px" }}></img>
             <div>{plant.price}</div>
             <div className='add-minus-quantity'>
-              <button className="minus" onClick={() => {this.decreaseCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price)}} > - </button>
-              <div className="amountInCart">Amount in Cart: {plant.count}</div>
-              <button type="button" onClick={() => {this.increaseCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price)}}> + </button>
-              <button type="button" onClick={() => {this.removeCartItem(plant.name)}}> trash symbol </button>
+              <button className="minus" onClick={() => {this.changeCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price, -1)}} > - </button>
+              <div className="amountInCart">Amount in Cart: {plant.count}
+            </div>
+              <button type="button" onClick={() => {this.changeCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price, 1)}}> + </button>
+              <button type="button" onClick={() => {this.removeCartItem(plant.plant_id)}}> trash symbol </button>
             </div>
           </div> )
         })}
       </div>
-            <p>Subtotal for your items is ${PRICE}</p>
+            <p>Subtotal for your items is ${this.state.totalCartPrice}</p>
           </div>
           <div>
-
             <button>Checkout</button>
-            <button onClick={()=>{window.localStorage.clear()}}>Clear Cart</button>
+            <button onClick={()=>{window.localStorage.clear()
+                this.setState({cartItems: JSON.parse(localStorage.getItem('cart'))})}}>Clear Cart</button>
           </div>
         </div>
       </div>
