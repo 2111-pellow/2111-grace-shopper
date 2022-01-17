@@ -33,7 +33,7 @@ class AllPlants extends React.Component {
 
 
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     const { filtered } = this.state;
     const plants = this.props.plants.filter((plant) => {
       if (filtered != "All")
@@ -45,7 +45,7 @@ class AllPlants extends React.Component {
     } else {
       return (
         <div>
-          <div>
+            <div>
             <label htmlFor="filter">Ease of Care:</label>
             <select name="filter" value={filtered} onChange={this.handleChange}>
               <option>All</option>
@@ -53,18 +53,22 @@ class AllPlants extends React.Component {
               <option>Medium</option>
               <option>Hard</option>
             </select>
-            {plants.map((singlePlant) => {
-              return (
-                <div key={singlePlant.id}>
+            </div>
+            <div className="products">
+              {plants.map((singlePlant) => { return (
+                <li key={singlePlant.id}>
+                  <div className="product">
+                  <Link to={`/plants/${singlePlant.id}`}>
+                  {<img src={singlePlant.imageUrl} style={{ width: "200px", height: "200px"}}/>}
+                  </Link>
+                  <div>
                   <b>
-                    <Link to={`/plants/${singlePlant.id}`}>
-                      {singlePlant.plant_name}
-                    </Link>
+                    <Link to={`/plants/${singlePlant.id}`} style={{ color: "black" }}>{singlePlant.plant_name}</Link>
                   </b>
-
-                  <button
-                    type="button"
-                    onClick={() => {
+                  </div>
+                  <div className="product-price">
+                  <div>{`$${singlePlant.price}`}</div>
+                  <button className="add to cart" style={{ color: "black" }} type="button" onClick={() => {
                       const cart = window.localStorage.getItem('cart');
                       let plants = [];
                       let plantDetails = {
@@ -73,7 +77,6 @@ class AllPlants extends React.Component {
                         ImageUrl: singlePlant.imageUrl,
                         price: singlePlant.price,
                       };
-
                       if (cart) {
                         plants = JSON.parse(cart);
                       }
@@ -81,29 +84,15 @@ class AllPlants extends React.Component {
                       window.localStorage.setItem(
                         'cart',
                         JSON.stringify(plants)
-                      );
-                    }}
-                  >
-                    Add To {<MdAddShoppingCart />}
+                      );}}>Add To Cart{<MdAddShoppingCart />}
                   </button>
-                  <div>
-                    <Link to={`/plants/${singlePlant.id}`}>
-                      {
-                        <img
-                          src={singlePlant.imageUrl}
-                          style={{ width: "200px", height: "200px" }}
-                        />
-                      }
-                    </Link>
                   </div>
-
-                  <div>{`$${singlePlant.price}`}</div>
-                  {this.props.isAdmin ? <button type="button" onClick={this.delete} value={singlePlant.id}>Delete Plant</button> : null}
-
+                {this.props.isAdmin ? <button type="button" onClick={this.delete} value ={singlePlant.id}>Delete Plant</button> : null}
                 </div>
+                </li>
               );
             })}
-          </div>
+            </div>
         </div>
       );
     }

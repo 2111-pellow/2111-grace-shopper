@@ -306,6 +306,7 @@ const plants = [
     easeOfCare: "Hard",
     price: 58.63,
   },
+  
 ];
 
 const users = [
