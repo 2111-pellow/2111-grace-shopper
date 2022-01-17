@@ -2,8 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
+import { useState } from "react"
 
 const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
+  let cartItems = JSON.parse(localStorage.getItem('cart'))
+const [quantity, setQuantity] = useState(localStorage.length ? cartItems.length : 0)
 
     const memberLinks = (
       <div>
@@ -30,7 +33,7 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-              {/* <span className="cartlogo__badge">{localStorage.length ? JSON.parse(localStorage.getItem('cart')).length : 0}</span> */}
+               <span className="cartlogo__badge">{quantity}</span>
             </span>
           </Link>
       </div>
