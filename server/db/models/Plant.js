@@ -17,7 +17,7 @@ const Plant = db.define("plant", {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      "https://envato-shoebox-0.imgix.net/d82a/febe-b0fa-4a3a-9ea8-20abf252c53e/0604-coffee-1373.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=c9e1d1661bf88a92bf1d3bef64333be7",
+      "https://media.istockphoto.com/photos/monstera-in-a-pot-isolated-on-white-background-close-up-of-tropical-picture-id1278906674?b=1&k=20&m=1278906674&s=170667a&w=0&h=PRsEw9KpsggCTUEqH_DqgtEKRt884wAGfQCQTeS8xBY=",
   },
   category: {
     type: Sequelize.STRING,
