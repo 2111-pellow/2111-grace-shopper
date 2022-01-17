@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { deletePlant, fetchPlants } from "../store/allPlants";
-import { addToOrderThunk } from "../store/cart";
+import { addPlant, deletePlant, fetchPlants } from "../store/allPlants";
 import { MdAddShoppingCart } from "react-icons/md";
-import { me } from '../store/auth'
+import AddPlant from "./AddPlant";
 
 class AllPlants extends React.Component {
   constructor() {
@@ -31,6 +30,11 @@ class AllPlants extends React.Component {
     this.props.deletePlant(e.target.value)
   }
 
+  add(e){
+    e.preventDefault();
+    this.props.deletePlant(e.target.value)
+  }
+
 
   render() {
     console.log(this.props)
@@ -53,6 +57,7 @@ class AllPlants extends React.Component {
               <option>Medium</option>
               <option>Hard</option>
             </select>
+            <AddPlant/>
             {plants.map((singlePlant) => {
               return (
                 <div key={singlePlant.id}>
@@ -120,7 +125,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => ({
   fetchPlants: () => dispatch(fetchPlants()),
-  deletePlant: (id) => dispatch(deletePlant(id))
+  deletePlant: (id) => dispatch(deletePlant(id)),
+  addPlant: () => dispatch(addPlant)
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);
