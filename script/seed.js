@@ -306,7 +306,604 @@ const plants = [
     easeOfCare: "Hard",
     price: 58.63,
   },
-  
+  {
+    plant_name: "Aluminum Plant",
+    description:
+      "An easy going house plant that is generally simple to please.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/aluminum_plant.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 98.0,
+    stock: 100,
+  },
+  {
+    plant_name: "Areca Palm",
+    description: "A cane type palm growing up to 8ft tall with mulitple stems.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/areca_palm_1.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 41.94,
+    stock: 77,
+  },
+  {
+    plant_name: "Boston Fern",
+    description: "One of the easier ferns to grow indoors.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/boston_ferns_in_hanging_baskets_1.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 17.37,
+    stock: 32,
+  },
+  {
+    plant_name: "Cast Iron Plant",
+    description:
+      "Receives its common name for its ability to withstand neglect. A nice an easy to care for foliage plant.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Aspidistra_Elatior.jpg",
+    category: "House Plant",
+    easeOfCare: "Medium",
+    price: 37.46,
+    stock: 47,
+  },
+  {
+    plant_name: "Canary Date Palm",
+    description:
+      "A tough palm displaying long fronds with thin straight leaflets.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/canary.jpg",
+    category: "House Plant",
+    easeOfCare: "Medium",
+    price: 40.31,
+    stock: 360,
+  },
+  {
+    plant_name: "Amaryllis",
+    description:
+      "Bulb flowering type plants that produce a cluster of attractive trumpet like flowers in different color variations.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/hippeastrum-plant.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 69.68,
+    stock: 77,
+  },
+  {
+    plant_name: "Bird of Paradise",
+    description:
+      "The Bird of Paradise is a delightfully easy to care for plant that enjoys warm, balmy days year round.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/Strelitzia_Reginae_Flower_img1.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 87.58,
+    stock: 8,
+  },
+  {
+    plant_name: "Blushing Bromeliad",
+    description:
+      "An interesting species from the bromeliad family which produces a red center within the rosette of leaves.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/blushing_bromeliad1.jpg",
+    category: "Flowers",
+    easeOfCare: "Medium",
+    price: 13.57,
+  },
+  {
+    plant_name: "Corsage Orchid",
+    description:
+      "The Corsage orchid is not the easiest of orchids to care due to its humidity and temperature needs.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/yellow_cattleya_orchid1.jpg",
+    category: "Flowers",
+    easeOfCare: "Hard",
+    price: 53.47,
+  },
+  {
+    plant_name: "Flaming Sword",
+    description:
+      "This species features a red sword like flower head which can grow up to 2ft tall and attractive mottled leaves.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/flaming-sword-plant.jpg",
+    category: "Flowers",
+    easeOfCare: "EasyHard",
+    price: 2.37,
+  },
+  {
+    plant_name: "Aloe Vera",
+    description:
+      "The Aloe Vera is a common house plant that has many potential heath benefits. An indoor Aloe is easy to grow and not demanding.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/aloe-foliage-1.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 63.59,
+  },
+  {
+    plant_name: "Baby Rubber Plant",
+    description:
+      "Although this plant can flower its main attraction is the foliage.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/baby_rubber_plant.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 51.08,
+  },
+  {
+    plant_name: "Bunny Ear Cactus",
+    description:
+      "The bunny ear cactus, also known as the polka dot cactus is a very popular plant.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Opuntia-microdasys.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 99.21,
+  },
+  {
+    plant_name: "Christmas Cactus",
+    description:
+      "The Christmas cactus is the ideal house plant if a grower likes to see flowers blooming from November - January.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/christmas-cactus.jpg",
+    category: "Succulent",
+    easeOfCare: "Medium",
+    price: 44.3,
+  },
+  {
+    plant_name: "Christmas cheer",
+    description:
+      "Very close relative to the Jelly beans plant displaying leaves which turn red in sunlight.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/sedum_rubrotinctum1.jpg",
+    category: "Succulent",
+    easeOfCare: "Hard",
+    price: 22.04,
+  },
+  {
+    plant_name: "Coral Cactus",
+    description:
+      "The Coral cactus is much as the name states in one sense and not in another. It's similar looking to coral but not an actual cactus.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/coral-cactus-orig.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 81.29,
+  },
+  {
+    plant_name: "Easter Cactus",
+    description:
+      "Tropical cactus that requires a certain amount of regular water in order to survive.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Hatiora-gaertneri.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 17.51,
+  },
+  {
+    plant_name: "Golden Barrel Cactus",
+    description:
+      "Globe shaped type cacti suitable for growing in conservatories, on patios or other indoor glass type rooms.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Golden_Barrel_Cactus.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 11.83,
+  },
+  {
+    plant_name: "Orchid Cactus",
+    description:
+      "The Orchid Cactus (forest type cacti) blooms multi-petalled bright funnel shaped flowers.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/orchid-cactus-blooming.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 63.49,
+  },
+  {
+    plant_name: "Rat's Tail Cactus",
+    description:
+      "Advice about the Rat's tail cactus (scientific name: Aporocactus Flagelliformis or Disocactus flagelliformis).",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/rats-tail-cactus-flowering.jpg",
+    category: "Cacti",
+    easeOfCare: "Hard",
+    price: 5.73,
+  },
+  {
+    plant_name: "Peruvian Apple Cactus",
+    description:
+      "The apple cactus (also known as columnar, column, hedge cactus and others) displays a prominent ribbed column stem with brown colored spines.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/peruvian-apple-cactus-close-up.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 11.76,
+  },
+  {
+    plant_name: "Chinese Evergreen",
+    description: "Grown primarily for the attractive leathery leaves.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/aglaonema.png",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 84.19,
+  },
+  {
+    plant_name: "Heart Of Jesus",
+    description:
+      "The caladium is a tuber species which displays the attractive bicolor leaves.",
+    imageUrl: "https://www.houseplantsexpert.com/assets/images/caladium1.jpg",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 49.16,
+  },
+  {
+    plant_name: "Lucky Bamboo",
+    description: "An easy to grow plant which can thrive in soil or water.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/lucky-bamboo-plant.jpg",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 59.5,
+  },
+  {
+    plant_name: "Madagascar Dragon Tree",
+    description:
+      "Most definitely one of the easiest indoor plants to grow and maintain. Dracaena Marginata trees can grow up to 6ft high.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Dracaena-marginata.jpg",
+    category: "House Plants",
+    easeOfCare: "Medium",
+    price: 68.78,
+  },
+  {
+    plant_name: "Mexican Fortune Tree",
+    description:
+      "A tree type plant growing up to 10ft tall or even kept to bonsai size indoors.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/pachira_braided_trunks.jpg",
+    category: "House Plants",
+    easeOfCare: "Hard",
+    price: 61.81,
+  },
+  {
+    plant_name: "Umbrella Tree",
+    description:
+      "An evergreen tree type species which grows up to 10ft or more tall.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/umbrella_plant.jpg",
+    category: "House Plants",
+    easeOfCare: "Hard",
+    price: 97.02,
+  },
+  {
+    plant_name: "Trailing Jade",
+    description:
+      "Trailing jade is a semi-succulent suitable for hanging baskets and windowsills.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/trailing_jade_peperomia1.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 9.21,
+  },
+  {
+    plant_name: "Madagascar Jasmine",
+    description:
+      "A flowering climbing vine which blooms white colored fragrant flowers in the right conditions.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/m_jasmine2.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 15.98,
+  },
+  {
+    plant_name: "Rose Of China",
+    description:
+      "All about the Rose of China (botanical name Hibiscus Rosa-Sinensis).",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Hibiscus-Rosa-Sinensis-Flower.jpg",
+    category: "Flowers",
+    easeOfCare: "Hard",
+    price: 58.63,
+  },
+  {
+    plant_name: "Aluminum Plant",
+    description:
+      "An easy going house plant that is generally simple to please.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/aluminum_plant.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 98.0,
+    stock: 100,
+  },
+  {
+    plant_name: "Areca Palm",
+    description: "A cane type palm growing up to 8ft tall with mulitple stems.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/areca_palm_1.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 41.94,
+    stock: 77,
+  },
+  {
+    plant_name: "Boston Fern",
+    description: "One of the easier ferns to grow indoors.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/boston_ferns_in_hanging_baskets_1.jpg",
+    category: "House Plant",
+    easeOfCare: "Easy",
+    price: 17.37,
+    stock: 32,
+  },
+  {
+    plant_name: "Cast Iron Plant",
+    description:
+      "Receives its common name for its ability to withstand neglect. A nice an easy to care for foliage plant.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Aspidistra_Elatior.jpg",
+    category: "House Plant",
+    easeOfCare: "Medium",
+    price: 37.46,
+    stock: 47,
+  },
+  {
+    plant_name: "Canary Date Palm",
+    description:
+      "A tough palm displaying long fronds with thin straight leaflets.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/canary.jpg",
+    category: "House Plant",
+    easeOfCare: "Medium",
+    price: 40.31,
+    stock: 360,
+  },
+  {
+    plant_name: "Amaryllis",
+    description:
+      "Bulb flowering type plants that produce a cluster of attractive trumpet like flowers in different color variations.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/hippeastrum-plant.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 69.68,
+    stock: 77,
+  },
+  {
+    plant_name: "Bird of Paradise",
+    description:
+      "The Bird of Paradise is a delightfully easy to care for plant that enjoys warm, balmy days year round.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/Strelitzia_Reginae_Flower_img1.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 87.58,
+    stock: 8,
+  },
+  {
+    plant_name: "Blushing Bromeliad",
+    description:
+      "An interesting species from the bromeliad family which produces a red center within the rosette of leaves.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/blushing_bromeliad1.jpg",
+    category: "Flowers",
+    easeOfCare: "Medium",
+    price: 13.57,
+  },
+  {
+    plant_name: "Corsage Orchid",
+    description:
+      "The Corsage orchid is not the easiest of orchids to care due to its humidity and temperature needs.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/yellow_cattleya_orchid1.jpg",
+    category: "Flowers",
+    easeOfCare: "Hard",
+    price: 53.47,
+  },
+  {
+    plant_name: "Flaming Sword",
+    description:
+      "This species features a red sword like flower head which can grow up to 2ft tall and attractive mottled leaves.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/flaming-sword-plant.jpg",
+    category: "Flowers",
+    easeOfCare: "EasyHard",
+    price: 2.37,
+  },
+  {
+    plant_name: "Aloe Vera",
+    description:
+      "The Aloe Vera is a common house plant that has many potential heath benefits. An indoor Aloe is easy to grow and not demanding.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/aloe-foliage-1.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 63.59,
+  },
+  {
+    plant_name: "Baby Rubber Plant",
+    description:
+      "Although this plant can flower its main attraction is the foliage.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/baby_rubber_plant.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 51.08,
+  },
+  {
+    plant_name: "Bunny Ear Cactus",
+    description:
+      "The bunny ear cactus, also known as the polka dot cactus is a very popular plant.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Opuntia-microdasys.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 99.21,
+  },
+  {
+    plant_name: "Christmas Cactus",
+    description:
+      "The Christmas cactus is the ideal house plant if a grower likes to see flowers blooming from November - January.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/christmas-cactus.jpg",
+    category: "Succulent",
+    easeOfCare: "Medium",
+    price: 44.3,
+  },
+  {
+    plant_name: "Christmas cheer",
+    description:
+      "Very close relative to the Jelly beans plant displaying leaves which turn red in sunlight.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/sedum_rubrotinctum1.jpg",
+    category: "Succulent",
+    easeOfCare: "Hard",
+    price: 22.04,
+  },
+  {
+    plant_name: "Coral Cactus",
+    description:
+      "The Coral cactus is much as the name states in one sense and not in another. It's similar looking to coral but not an actual cactus.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/coral-cactus-orig.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 81.29,
+  },
+  {
+    plant_name: "Easter Cactus",
+    description:
+      "Tropical cactus that requires a certain amount of regular water in order to survive.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Hatiora-gaertneri.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 17.51,
+  },
+  {
+    plant_name: "Golden Barrel Cactus",
+    description:
+      "Globe shaped type cacti suitable for growing in conservatories, on patios or other indoor glass type rooms.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Golden_Barrel_Cactus.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 11.83,
+  },
+  {
+    plant_name: "Orchid Cactus",
+    description:
+      "The Orchid Cactus (forest type cacti) blooms multi-petalled bright funnel shaped flowers.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/orchid-cactus-blooming.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 63.49,
+  },
+  {
+    plant_name: "Rat's Tail Cactus",
+    description:
+      "Advice about the Rat's tail cactus (scientific name: Aporocactus Flagelliformis or Disocactus flagelliformis).",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/rats-tail-cactus-flowering.jpg",
+    category: "Cacti",
+    easeOfCare: "Hard",
+    price: 5.73,
+  },
+  {
+    plant_name: "Peruvian Apple Cactus",
+    description:
+      "The apple cactus (also known as columnar, column, hedge cactus and others) displays a prominent ribbed column stem with brown colored spines.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/peruvian-apple-cactus-close-up.jpg",
+    category: "Cacti",
+    easeOfCare: "Easy",
+    price: 11.76,
+  },
+  {
+    plant_name: "Chinese Evergreen",
+    description: "Grown primarily for the attractive leathery leaves.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/aglaonema.png",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 84.19,
+  },
+  {
+    plant_name: "Heart Of Jesus",
+    description:
+      "The caladium is a tuber species which displays the attractive bicolor leaves.",
+    imageUrl: "https://www.houseplantsexpert.com/assets/images/caladium1.jpg",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 49.16,
+  },
+  {
+    plant_name: "Lucky Bamboo",
+    description: "An easy to grow plant which can thrive in soil or water.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/lucky-bamboo-plant.jpg",
+    category: "House Plants",
+    easeOfCare: "Easy",
+    price: 59.5,
+  },
+  {
+    plant_name: "Madagascar Dragon Tree",
+    description:
+      "Most definitely one of the easiest indoor plants to grow and maintain. Dracaena Marginata trees can grow up to 6ft high.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Dracaena-marginata.jpg",
+    category: "House Plants",
+    easeOfCare: "Medium",
+    price: 68.78,
+  },
+  {
+    plant_name: "Mexican Fortune Tree",
+    description:
+      "A tree type plant growing up to 10ft tall or even kept to bonsai size indoors.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/pachira_braided_trunks.jpg",
+    category: "House Plants",
+    easeOfCare: "Hard",
+    price: 61.81,
+  },
+  {
+    plant_name: "Umbrella Tree",
+    description:
+      "An evergreen tree type species which grows up to 10ft or more tall.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/umbrella_plant.jpg",
+    category: "House Plants",
+    easeOfCare: "Hard",
+    price: 97.02,
+  },
+  {
+    plant_name: "Trailing Jade",
+    description:
+      "Trailing jade is a semi-succulent suitable for hanging baskets and windowsills.",
+    imageUrl:
+      "https://www.houseplantsexpert.com/assets/images/trailing_jade_peperomia1.jpg",
+    category: "Succulent",
+    easeOfCare: "Easy",
+    price: 9.21,
+  },
+  {
+    plant_name: "Madagascar Jasmine",
+    description:
+      "A flowering climbing vine which blooms white colored fragrant flowers in the right conditions.",
+    imageUrl: "https://www.houseplantsexpert.com/image-files/m_jasmine2.jpg",
+    category: "Flowers",
+    easeOfCare: "Easy",
+    price: 15.98,
+  },
+  {
+    plant_name: "Rose Of China",
+    description:
+      "All about the Rose of China (botanical name Hibiscus Rosa-Sinensis).",
+    imageUrl:
+      "https://www.houseplantsexpert.com/image-files/Hibiscus-Rosa-Sinensis-Flower.jpg",
+    category: "Flowers",
+    easeOfCare: "Hard",
+    price: 58.63,
+  },
 ];
 
 const users = [
