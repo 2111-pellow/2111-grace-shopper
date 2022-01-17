@@ -35,8 +35,9 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
           </Link>
       </div>
     );
-
+    console.log("rendering NavBar");
     return (
+
       <div>
       <Link to="/" style={{ color: "black" }}><h1>The Greenhouse</h1></Link>
       <nav>
