@@ -4,11 +4,58 @@ import { Link } from "react-router-dom";
 import OrderItem from "./CartItem";
 import addToCartThunk from "../store/cart"
 
-//use map to map over the local storage keys pushed into an array?
-// Key
 class Cart extends React.Component {
   constructor(props){
     super(props)
+    this.decreaseCartQuantity = this.decreaseCartQuantity.bind(this)
+    this.increaseCartQuantity = this.increaseCartQuantity.bind(this)
+    this.removeCartItem = this.removeCartItem.bind(this)
+  }
+  removeCartItem(name){
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (items.length === 1){
+      window.localStorage.clear()}
+    else if (item) {
+      let index = items.indexOf(item)
+      console.log(index)
+      items = items.splice(index, 1)
+      localStorage.setItem('cart', JSON.stringify(items))
+    }
+  }
+  decreaseCartQuantity(plant_id, name, ImageUrl, price) {
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (item) {
+      item.count = Number(item.count) - 1;
+    } else {
+      items.push({
+        plant_id,
+        name,
+        ImageUrl,
+        count: 1,
+        price
+      })
+    }
+    localStorage.setItem('cart', JSON.stringify(items));
+  }
+
+  increaseCartQuantity(plant_id, name, ImageUrl, price) {
+    console.log(name)
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (item) {
+      item.count = Number(item.count) + 1;
+    } else {
+      items.push({
+        plant_id,
+        name,
+        ImageUrl,
+        count: 1,
+        price
+      })
+    }
+    localStorage.setItem('cart', JSON.stringify(items));
   }
 
   render() {
@@ -19,10 +66,11 @@ class Cart extends React.Component {
     } else {
        const price = (cartItems) =>{
       for (let i=0; i < cartItems.length; i++){
-        totalPrice += parseInt(cartItems[i].price)
+        totalPrice += Number(cartItems[i].price)
       }
       return totalPrice
     }
+    let PRICE = price(cartItems).toFixed(2)
     return (
       <div>
       <div className="cartscreen">
@@ -35,13 +83,19 @@ class Cart extends React.Component {
           <div>{cartItems.map((plant, index)=>{
           return (
           <div key={index}>
-            <div>{plant.plant_name}</div>
+            <div>{plant.name}</div>
             <img src={plant.ImageUrl} style={{ width: "200px", height: "200px" }}></img>
             <div>{plant.price}</div>
-          </div>)
+            <div className='add-minus-quantity'>
+              <button className="minus" onClick={() => {this.decreaseCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price)}} > - </button>
+              <div className="amountInCart">Amount in Cart: {plant.count}</div>
+              <button type="button" onClick={() => {this.increaseCartQuantity(plant.plant_id, plant.name, plant.imageUrl, plant.price)}}> + </button>
+              <button type="button" onClick={() => {this.removeCartItem(plant.name)}}> trash symbol </button>
+            </div>
+          </div> )
         })}
       </div>
-            <p>Subtotal for your {cartItems.length} items is ${price(cartItems)}</p>
+            <p>Subtotal for your items is ${PRICE}</p>
           </div>
           <div>
 
