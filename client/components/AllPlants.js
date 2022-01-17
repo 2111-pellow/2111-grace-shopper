@@ -14,6 +14,7 @@ class AllPlants extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.delete = this.delete.bind(this)
+    this.addNewItem = this.addNewItem.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +30,23 @@ class AllPlants extends React.Component {
   delete(e) {
     e.preventDefault();
     this.props.deletePlant(e.target.value)
+  }
+
+  addNewItem(plant_id, name, ImageUrl, price) {
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (item) {
+      item.count = Number(item.count) + 1;
+    } else {
+      items.push({
+        plant_id,
+        name,
+        ImageUrl,
+        count: 1,
+        price
+      })
+    }
+    localStorage.setItem('cart', JSON.stringify(items));
   }
 
 
@@ -64,25 +82,7 @@ class AllPlants extends React.Component {
 
                   <button
                     type="button"
-                    onClick={() => {
-                      const cart = window.localStorage.getItem('cart');
-                      let plants = [];
-                      let plantDetails = {
-                        plant_id: singlePlant.id,
-                        plant_name: singlePlant.plant_name,
-                        ImageUrl: singlePlant.imageUrl,
-                        price: singlePlant.price,
-                      };
-
-                      if (cart) {
-                        plants = JSON.parse(cart);
-                      }
-                      plants.push(plantDetails);
-                      window.localStorage.setItem(
-                        'cart',
-                        JSON.stringify(plants)
-                      );
-                    }}
+                    onClick={() => {this.addNewItem(singlePlant.id, singlePlant.plant_name, singlePlant.imageUrl,singlePlant.price)}}
                   >
                     Add To {<MdAddShoppingCart />}
                   </button>

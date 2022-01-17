@@ -8,12 +8,29 @@ import { addToOrderThunk } from "../store/cart";
 class SinglePlant extends React.Component {
   constructor(props) {
     super(props);
+    this.addNewItem = this.addNewItem.bind(this)
   }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
   }
   handleSubmit(e) {
     e.preventDefault();
+  }
+   addNewItem(plant_id, name, ImageUrl, price) {
+    var items = JSON.parse(localStorage.getItem('cart')) || [];
+    var item = items.find(item => item.name === name);
+    if (item) {
+      item.count = Number(item.count) + 1;
+    } else {
+      items.push({
+        plant_id,
+        name,
+        ImageUrl,
+        count: 1,
+        price
+      })
+    }
+    localStorage.setItem('cart', JSON.stringify(items));
   }
 
   render() {
@@ -55,27 +72,9 @@ class SinglePlant extends React.Component {
               <p>
               <button
                     type="button"
-                    onClick={() => {
-                      const cart = window.localStorage.getItem('cart');
-                      let plants = [];
-                      let plantDetails = {
-                        plant_id: plant.id,
-                        plant_name: plant.plant_name,
-                        ImageUrl: plant.imageUrl,
-                        price: plant.price,
-                      };
-
-                      if (cart) {
-                        plants = JSON.parse(cart);
-                      }
-                      plants.push(plantDetails);
-                      window.localStorage.setItem(
-                        'cart',
-                        JSON.stringify(plants)
-                      );
-                    }}
-                  >
-                    Add To {<MdAddShoppingCart />}
+                     onClick={() => {
+                       this.addNewItem(plant.id, plant.plant_name, plant.imageUrl, plant.price)}}
+                   > Add To {<MdAddShoppingCart />}
                   </button>
               </p>
             </div>
