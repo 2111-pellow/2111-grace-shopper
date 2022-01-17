@@ -19,10 +19,12 @@ class Cart extends React.Component {
     } else {
        const price = (cartItems) =>{
       for (let i=0; i < cartItems.length; i++){
-        totalPrice += parseInt(cartItems[i].price)
+        totalPrice += Number(cartItems[i].price)
       }
+      console.log(totalPrice)
       return totalPrice
     }
+    let PRICE = price(cartItems).toFixed(2)
     return (
       <div>
       <div className="cartscreen">
@@ -41,7 +43,7 @@ class Cart extends React.Component {
           </div>)
         })}
       </div>
-            <p>Subtotal for your {cartItems.length} items is ${price(cartItems)}</p>
+            <p>Subtotal for your {cartItems.length} items is ${PRICE}</p>
           </div>
           <div>
 
