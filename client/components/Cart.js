@@ -14,7 +14,7 @@ class Cart extends React.Component {
     };
     this.changeCartQuantity = this.changeCartQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
-    this.price - this.price.bind(this);
+    this.price = this.price.bind(this);
     this.handleToken = this.handleToken.bind(this);
   }
   removeCartItem(plant_id) {
