@@ -3,22 +3,20 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import OrderItem from "./CartItem";
 import addToCartThunk from "../store/cart";
-import StripeCheckout from "react-stripe-checkout";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: JSON.parse(localStorage.getItem("cart")) || [],
+      cartItems: JSON.parse(localStorage.getItem("cart")),
       totalCartPrice: this.price(JSON.parse(localStorage.getItem("cart"))),
     };
     this.changeCartQuantity = this.changeCartQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
     this.price = this.price.bind(this);
-    this.handleToken = this.handleToken.bind(this);
   }
   removeCartItem(plant_id) {
-    var items = JSON.parse(localStorage.getItem("cart")) || [];
+    var items = JSON.parse(localStorage.getItem("cart"));
     var item = items.find((item) => item.plant_id === plant_id);
     if (items.length === 1) {
       window.localStorage.clear();
@@ -32,9 +30,20 @@ class Cart extends React.Component {
     }
   }
   changeCartQuantity(plant_id, name, ImageUrl, price, num) {
-    var items = JSON.parse(localStorage.getItem("cart")) || [];
+    var items = JSON.parse(localStorage.getItem("cart"));
     var item = items.find((item) => item.name === name);
     if (item) {
+      if (item.count === 1 && num === -1){
+        if (items.length === 1) {
+          window.localStorage.clear();
+          this.setState({ totalCartPrice: 0 });
+        }
+        let index = items.indexOf(item);
+        items.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(items));
+      let price = this.price(JSON.parse(localStorage.getItem("cart")));
+      this.setState({ cartItems: items, totalCartPrice: price });
+      }
       item.count = Number(item.count) + num;
     } else {
       items.push({
@@ -52,17 +61,18 @@ class Cart extends React.Component {
 
   price(cartItems) {
     let totalPrice = 0;
+    if (!cartItems || cartItems === []){
+      totalPrice = 0
+    } else {
     for (let i = 0; i < cartItems.length; i++) {
-      totalPrice = Number(cartItems[i].price) * Number(cartItems[i].count);
+      totalPrice += Number(cartItems[i].price) * Number(cartItems[i].count);
     }
     return (totalPrice = totalPrice.toFixed(2));
   }
-  handleToken(token, addresses) {
-    console.log({ token, addresses });
-  }
+
   render() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
-    if (!cartItems) {
+    if (!cartItems|| cartItems === []) {
       return <div>Your cart is empty</div>;
     } else {
       return (
@@ -135,19 +145,10 @@ class Cart extends React.Component {
               <p>Subtotal for your items is ${this.state.totalCartPrice}</p>
             </div>
             <div>
-              <StripeCheckout
-                stripeKey="pk_test_51KIxdeDln4s4jzUmC2iVGwEhn3THaCORSorbdcBovd4cJzf1BpDPRmZfZU4SSRbuQBN97Ekwdb5J2HW463AoxmjZ00RdSYjvoA"
-                token={this.handleToken}
-                label="Checkout with 💳"
-                // label="Pay with 💳"
-                name="The Green House"
-                // billingAddress
-                // shippingAddress
-                amount={this.state.totalCartPrice * 100}
-                // plant_name={this.plant.plant_name}
-                panelLabel="Buy for {{amount}}"
-              />
-              {/* <button>Checkout</button> */}
+              <Link to="/checkout">
+                <button>Checkout</button>
+              </Link>
+
               <button
                 onClick={() => {
                   window.localStorage.clear();
