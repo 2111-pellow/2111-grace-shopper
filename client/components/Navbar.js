@@ -6,11 +6,11 @@ import { useState } from "react"
 
 const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
   let cartItems = JSON.parse(localStorage.getItem('cart'))
-const [quantity, setQuantity] = useState(localStorage.length ? cartItems.length : 0)
+// const [quantity, setQuantity] = useState(localStorage.length ? cartItems.length : 0)
 
     const memberLinks = (
       <div>
-        <Link to="/singleuserinfo">My Info</Link>
+        <Link to="/myinfo">My Info</Link>
         <Link to="/plants">Plants Room</Link>
         <Link to="/aboutUs">About Us</Link>
         <Link to="/cart" className="cart__link">
@@ -33,14 +33,13 @@ const [quantity, setQuantity] = useState(localStorage.length ? cartItems.length 
             <i className="fas fa-shopping-cart"></i>
             <span>
               Cart
-               <span className="cartlogo__badge">{quantity}</span>
+               {/* <span className="cartlogo__badge">{quantity}</span> */}
             </span>
           </Link>
       </div>
     );
-    console.log("rendering NavBar");
-    return (
 
+    return (
       <div>
       <Link to="/" style={{ color: "black" }}><h1>The Greenhouse</h1></Link>
       <nav>

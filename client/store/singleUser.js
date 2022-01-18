@@ -2,32 +2,53 @@ import axios from 'axios'
 
 //action types
 const GET_USER = "GET_USER"
+const UPDATE_USER = "UPDATE_USER"
 
 //action creators
-
 export const getSingleUser = (user) => ({
   type: GET_USER,
   user
 })
 
-//thunks
+const _updateUser = (user) => {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
 
-export const getSingleUserThunk = (userId) => {
+//thunks
+export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
     try {
-      const {data: User } = await axios.get(`/api/users/${userId}`)
-      dispatch(getSingleUser(User))
+      const {data: user } = await axios.get(`/api/users/${userId}`)
+      dispatch(getSingleUser(user))
     } catch (error) {
       console.log('GET SINGLE USER THUNK ERROR')
     }
   }
 }
 
-//reducers
+export const updateUser = (userId, updated) => {
+  return async (dispatch) => {
+    try{
+      const {data: updatedUser} = await axios.put(`/api/editUser/${userId}`, updated)
+      dispatch(_updateUser(updatedUser))
+    }
+    catch (err) {
+      console.log('updateUser thunk error!', err)
+    }
+  }
+}
 
-export default function singleUserReducer(state = {}, action) {
+//reducers
+const initialState = {}
+
+export default function singleUserReducer(state = initialState, action) {
   switch (action.type){
     case GET_USER:
+      return action.user
+    case UPDATE_USER:
       return action.user
     default:
       return state

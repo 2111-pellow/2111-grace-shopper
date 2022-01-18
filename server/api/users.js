@@ -27,3 +27,22 @@ router.get('/:userId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/:userId', async(req, res, next) => {
+  try {
+    const newPlant = await Plant.create(req.body);
+    res.send(newPlant)
+  } catch (error){
+    next(error)
+  }
+})
+
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.plantId);
+    const updated = await user.update(req.body)
+    res.send(updated);
+  } catch (error) {
+    next(error);
+  }
+});

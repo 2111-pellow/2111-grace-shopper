@@ -9,8 +9,9 @@ import AboutUs from "./components/AboutUs";
 import AllPlants from "./components/AllPlants";
 import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
-import SingleUserInfo from "./components/SingleUserInfo";
+//import EditSingleUser from "./components/EditSingleUser";
 import { fetchPlants } from "./store/allPlants";
+import SingleUserInfo from "./components/SingleUserInfo";
 import Checkout from "./components/Checkout";
 
 /**
@@ -21,10 +22,7 @@ class Routes extends Component {
     this.props.loadInitialData();
     this.props.fetchPlants();
   }
-
   render() {
-    console.log("rendering routes");
-    console.log("this is routes props", this.props);
     const { isLoggedIn } = this.props;
     return (
       <div>
@@ -35,8 +33,8 @@ class Routes extends Component {
             <Route exact path="/plants" component={AllPlants} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/myinfo" component = {SingleUserInfo}/>
             <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/singleuserinfo" component={SingleUserInfo} />
           </Switch>
         ) : (
           <Switch>

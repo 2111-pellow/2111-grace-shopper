@@ -18,7 +18,7 @@ class AllPlants extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.delete = this.delete.bind(this);
-    this.handlePageClick = this.handlePageClick.bind(this);
+    //this.handlePageClick = this.handlePageClick.bind(this);
     this.addNewItem = this.addNewItem.bind(this);
   }
 
@@ -70,11 +70,9 @@ class AllPlants extends React.Component {
 
   receivedData() {
     const plants = this.props.plants;
-    const postData = plants
-      .slice(this.state.offset, this.state.offset + this.state.perPage)
-      .map((singlePlant) => {
-        return (
-          <div key={singlePlant.id}>
+    const postData = plants.slice(this.state.offset, this.state.offset + this.state.perPage).map((singlePlant) => {
+      return (
+        <div key={singlePlant.id}>
             <div className="product">
               <Link to={`/plants/${singlePlant.id}`}>
                 {
@@ -94,6 +92,7 @@ class AllPlants extends React.Component {
                   </Link>
                 </b>
               </div>
+              <div>{`$${singlePlant.price}`}
               <button
                 className="add to cart"
                 type="button"
@@ -108,13 +107,13 @@ class AllPlants extends React.Component {
               >
                 Add To {<MdAddShoppingCart />}
               </button>
-              <div>{`$${singlePlant.price}`}</div>
+              </div>
               {this.props.isAdmin ? (
                 <button
+                  className="add to cart"
                   type="button"
                   onClick={this.delete}
-                  value={singlePlant.id}
-                >
+                  value={singlePlant.id}>
                   Delete Plant
                 </button>
               ) : null}
@@ -134,14 +133,13 @@ class AllPlants extends React.Component {
     //   if (filtered != "All")
     //   return plant.easeOfCare === filtered;
     //   return plant;
-    // });
+     // });
     const plants = this.props.plants;
     if (plants === []) {
       ("out of stock");
     } else {
       return (
         <div>
-          <div>
             {/* <div>
             <label htmlFor="filter">Ease of Care:</label>
             <select name="filter" value={filtered} onChange={this.handleChange}>
@@ -154,67 +152,18 @@ class AllPlants extends React.Component {
 
             {this.props.isAdmin ? <AddPlant /> : null}
 
-            {plants.map((singlePlant) => {
-              return (
-                <div key={singlePlant.id}>
-                  <b>
-                    <Link to={`/plants/${singlePlant.id}`}>
-                      {singlePlant.plant_name}
-                    </Link>
-                  </b>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.addNewItem(
-                        singlePlant.id,
-                        singlePlant.plant_name,
-                        singlePlant.imageUrl,
-                        singlePlant.price
-                      );
-                    }}
-                  >
-                    Add To {<MdAddShoppingCart />}
-                  </button>
-                  <div>
-                    <Link to={`/plants/${singlePlant.id}`}>
-                      {
-                        <img
-                          src={singlePlant.imageUrl}
-                          style={{ width: "200px", height: "200px" }}
-                        />
-                      }
-                    </Link>
-                  </div>
-
-                  <div>{`$${singlePlant.price}`}</div>
-                  {this.props.isAdmin ? (
-                    <button
-                      type="button"
-                      onClick={this.delete}
-                      value={singlePlant.id}
-                    >
-                      Delete Plant
-                    </button>
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
-          <div>
             {this.state.postData}
             <ReactPaginate
               previousLabel={"Previous"}
               nextLabel={"Next"}
               pageCount={this.state.pageCount}
               marginPagesDisplayed={1}
-              pageRangeDisplayed={9}
+              pageRangeDisplayed={10}
               onPageChange={this.handlePageClick}
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}
               activeClassName={"active"}
             />
-          </div>
         </div>
       );
     }

@@ -69,7 +69,7 @@ class Cart extends React.Component {
     }
     return (totalPrice = totalPrice.toFixed(2));
   }
-
+  }
   render() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     if (!cartItems|| cartItems === []) {
