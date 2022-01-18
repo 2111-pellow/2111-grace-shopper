@@ -12,4 +12,11 @@ const requireToken = async (req, res, next) => {
   }
 };
 
-module.exports = requireToken;
+const isAdmin = async (req, res, next) => {
+  if(!req.user.isAdmin) {
+  res.send('You dont have access!')
+  }
+}
+
+module.exports =
+{ requireToken, isAdmin };
