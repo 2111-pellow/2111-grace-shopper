@@ -63,7 +63,7 @@ class Cart extends React.Component {
 
   price(cartItems) {
     let totalPrice = 0;
-    if (!cartItems){
+    if (!cartItems || cartItems === []){
       totalPrice = 0
     } else {
     for (let i = 0; i < cartItems.length; i++) {
@@ -77,7 +77,7 @@ class Cart extends React.Component {
   }
   render() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
-    if (!cartItems) {
+    if (!cartItems|| cartItems === []) {
       return <div>Your cart is empty</div>;
     } else {
       return (
