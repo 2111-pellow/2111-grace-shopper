@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
 import SingleUserInfo from "./components/SingleUserInfo";
 import { fetchPlants } from "./store/allPlants";
+import Checkout from "./components/Checkout";
 
 /**
  * COMPONENT
@@ -22,7 +23,7 @@ class Routes extends Component {
   }
 
   render() {
-    console.log("rendering routes")
+    console.log("rendering routes");
     console.log("this is routes props", this.props);
     const { isLoggedIn } = this.props;
     return (
@@ -34,7 +35,8 @@ class Routes extends Component {
             <Route exact path="/plants" component={AllPlants} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/singleuserinfo" component = {SingleUserInfo}/>
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/singleuserinfo" component={SingleUserInfo} />
           </Switch>
         ) : (
           <Switch>
@@ -43,6 +45,7 @@ class Routes extends Component {
             <Route exact path="/plants" component={AllPlants} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
@@ -65,7 +68,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData() { dispatch(me());},
+    loadInitialData() {
+      dispatch(me());
+    },
     fetchPlants: () => dispatch(fetchPlants()),
   };
 };

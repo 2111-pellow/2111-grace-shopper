@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import OrderItem from "./CartItem";
 import addToCartThunk from "../store/cart";
-import StripeCheckout from "react-stripe-checkout";
 
 class Cart extends React.Component {
   constructor(props) {
@@ -15,7 +14,6 @@ class Cart extends React.Component {
     this.changeCartQuantity = this.changeCartQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
     this.price = this.price.bind(this);
-    this.handleToken = this.handleToken.bind(this);
   }
   removeCartItem(plant_id) {
     var items = JSON.parse(localStorage.getItem("cart"));
@@ -71,10 +69,7 @@ class Cart extends React.Component {
     }
     return (totalPrice = totalPrice.toFixed(2));
   }
-}
-  handleToken(token, addresses) {
-    console.log({ token, addresses });
-  }
+
   render() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
     if (!cartItems|| cartItems === []) {
@@ -150,19 +145,10 @@ class Cart extends React.Component {
               <p>Subtotal for your items is ${this.state.totalCartPrice}</p>
             </div>
             <div>
-              <StripeCheckout
-                stripeKey="pk_test_51KIxdeDln4s4jzUmC2iVGwEhn3THaCORSorbdcBovd4cJzf1BpDPRmZfZU4SSRbuQBN97Ekwdb5J2HW463AoxmjZ00RdSYjvoA"
-                token={this.handleToken}
-                label="Checkout with 💳"
-                // label="Pay with 💳"
-                name="The Green House"
-                // billingAddress
-                // shippingAddress
-                amount={this.state.totalCartPrice * 100}
-                // plant_name={this.plant.plant_name}
-                panelLabel="Buy for {{amount}}"
-              />
-              {/* <button>Checkout</button> */}
+              <Link to="/checkout">
+                <button>Checkout</button>
+              </Link>
+
               <button
                 onClick={() => {
                   window.localStorage.clear();
