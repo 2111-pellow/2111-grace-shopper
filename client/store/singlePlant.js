@@ -5,7 +5,6 @@ const GET_PLANT = "GET_PLANT"
 const UPDATE_PLANT = "UPDATE_PLANT"
 
 //action creators
-
 export const getSinglePlant = (plant) => ({
   type: GET_PLANT,
   plant
@@ -17,7 +16,6 @@ export const _updatePlant = (plant) => ({
 })
 
 //thunks
-
 export const getSinglePlantThunk = (plantId) => {
   return async (dispatch) => {
     try {

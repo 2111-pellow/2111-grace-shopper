@@ -99,12 +99,12 @@ form div {
   align-items: center;
 }
 
-/* .add.to.cart {
+.add.to.cart {
   padding: .5rem;
   border: 0.1rem #c0c0c0 solid;
   background-color: #bfbdb9;
   cursor: pointer;
-} */
+}
 
 .button:hover {
   border: 0.5rem #808080 solid;
