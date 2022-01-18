@@ -8,7 +8,7 @@ class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: JSON.parse(localStorage.getItem("cart")) || [],
+      cartItems: JSON.parse(localStorage.getItem("cart")),
       totalCartPrice: this.price(JSON.parse(localStorage.getItem("cart"))),
     };
     this.changeCartQuantity = this.changeCartQuantity.bind(this);
@@ -16,7 +16,7 @@ class Cart extends React.Component {
     this.price = this.price.bind(this);
   }
   removeCartItem(plant_id) {
-    var items = JSON.parse(localStorage.getItem("cart")) || [];
+    var items = JSON.parse(localStorage.getItem("cart"));
     var item = items.find((item) => item.plant_id === plant_id);
     if (items.length === 1) {
       window.localStorage.clear();
@@ -30,9 +30,20 @@ class Cart extends React.Component {
     }
   }
   changeCartQuantity(plant_id, name, ImageUrl, price, num) {
-    var items = JSON.parse(localStorage.getItem("cart")) || [];
+    var items = JSON.parse(localStorage.getItem("cart"));
     var item = items.find((item) => item.name === name);
     if (item) {
+      if (item.count === 1 && num === -1){
+        if (items.length === 1) {
+          window.localStorage.clear();
+          this.setState({ totalCartPrice: 0 });
+        }
+        let index = items.indexOf(item);
+        items.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(items));
+      let price = this.price(JSON.parse(localStorage.getItem("cart")));
+      this.setState({ cartItems: items, totalCartPrice: price });
+      }
       item.count = Number(item.count) + num;
     } else {
       items.push({
@@ -50,15 +61,18 @@ class Cart extends React.Component {
 
   price(cartItems) {
     let totalPrice = 0;
+    if (!cartItems || cartItems === []){
+      totalPrice = 0
+    } else {
     for (let i = 0; i < cartItems.length; i++) {
-      totalPrice = Number(cartItems[i].price) * Number(cartItems[i].count);
+      totalPrice += Number(cartItems[i].price) * Number(cartItems[i].count);
     }
     return (totalPrice = totalPrice.toFixed(2));
   }
 
   render() {
     let cartItems = JSON.parse(localStorage.getItem("cart"));
-    if (!cartItems) {
+    if (!cartItems|| cartItems === []) {
       return <div>Your cart is empty</div>;
     } else {
       return (
