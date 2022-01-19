@@ -22,10 +22,7 @@ export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem('token')
-      console.log('TOKEN', token)
-      console.log(userId)
       const {data: user } = await axios.get(`/api/users/${userId}`, { headers: { authorization: token }})
-      console.log('FRONTEND', user)
       dispatch(getSingleUser(user))
 
     } catch (error) {
@@ -37,7 +34,6 @@ export const fetchSingleUser = (userId) => {
 export const updateUser = (user) => {
   return async (dispatch) => {
     try{
-      console.log(user)
       const {data: updatedUser} = await axios.put(`/api/users/${user.id}`, user)
       dispatch(_updateUser(updatedUser))
     }
