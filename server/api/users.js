@@ -3,8 +3,9 @@ const { models: { User, Plant }} = require('../db')
 module.exports = router
 const { requireToken, isAdmin } = require('../authMiddleware')
 
-router.get('/', requireToken, isAdmin, async (req, res, next) => {
+router.get('/',requireToken, isAdmin, async (req, res, next) => {
   try {
+    console.log('HELLLLLO')
     const users = await User.findAll()
     res.json(users)
   } catch (err) {
