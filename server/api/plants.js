@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Plant = require("../db/models/Plant");
-
+const { isAdmin } = require('../authMiddleware')
 // GET: all plants
 router.get("/", async (req, res, next) => {
   try {

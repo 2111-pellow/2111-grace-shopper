@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage";
 import { fetchPlants } from "./store/allPlants";
 import SingleUserInfo from "./components/SingleUserInfo";
 import Checkout from "./components/Checkout";
+import AllUsers from "./components/AllUsers";
 
 /**
  * COMPONENT
@@ -31,6 +32,7 @@ class Routes extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/plants/:plantId" component={SinglePlant} />
             <Route exact path="/plants" component={AllPlants} />
+            <Route exact path="/users" component={AllUsers} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/myinfo" component = {SingleUserInfo}/>

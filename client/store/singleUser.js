@@ -21,8 +21,13 @@ const _updateUser = (user) => {
 export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
     try {
-      const {data: user } = await axios.get(`/api/users/${userId}`)
+      const token = window.localStorage.getItem('token')
+      console.log('TOKEN', token)
+      console.log(userId)
+      const {data: user } = await axios.get(`/api/users/${userId}`, { headers: { authorization: token }})
+      console.log('FRONTEND', user)
       dispatch(getSingleUser(user))
+
     } catch (error) {
       console.log('GET SINGLE USER THUNK ERROR')
     }

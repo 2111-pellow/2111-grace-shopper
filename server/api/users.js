@@ -1,15 +1,14 @@
 const router = require('express').Router()
 const { models: { User, Plant }} = require('../db')
 module.exports = router
+const { requireToken, isAdmin } = require('../authMiddleware')
+
 
 //GET: all users to api/users/
-router.get("/", async (req, res, next) => {
+router.get('/',requireToken, isAdmin, async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      // include: {
-      //   model: Plant
-      // }
-    })
+    console.log('HELLLLLO')
+    const users = await User.findAll()
     res.json(users)
   } catch (err) {
     next(err)
@@ -17,9 +16,14 @@ router.get("/", async (req, res, next) => {
 })
 
 //GET: all users to api/users/:userId
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', requireToken, async (req, res, next) => {
   try {
+    console.log('server route')
+    if(req.params.userId != req.user.id){
+      res.send('You dont have access!')
+    }
     const user = await User.findByPk(req.params.userId)
+    console.log(user)
     if (!user){
       res.status(404).send("Sorry this user does not exist!")
     } else {
@@ -51,5 +55,4 @@ router.put('/:userId', async (req, res, next) => {
   }
 });
 
-//Delete a user to api/users/:userId
-router.delet
+
