@@ -3,6 +3,8 @@ const { models: { User, Plant }} = require('../db')
 module.exports = router
 const { requireToken, isAdmin } = require('../authMiddleware')
 
+
+//GET: all users to api/users/
 router.get('/',requireToken, isAdmin, async (req, res, next) => {
   try {
     console.log('HELLLLLO')
@@ -13,6 +15,7 @@ router.get('/',requireToken, isAdmin, async (req, res, next) => {
   }
 })
 
+//GET: all users to api/users/:userId
 router.get('/:userId', requireToken, async (req, res, next) => {
   try {
     console.log('server route')
@@ -31,21 +34,25 @@ router.get('/:userId', requireToken, async (req, res, next) => {
   }
 })
 
-router.post('/:userId', async(req, res, next) => {
+//Add new user to api/users/
+router.post('/', async(req, res, next) => {
   try {
-    const newPlant = await Plant.create(req.body);
-    res.send(newPlant)
+    const newUser = await User.create(req.body);
+    res.status(201).send(newUser)
   } catch (error){
     next(error)
   }
 })
 
+//Update a user to api/users/:userId
 router.put('/:userId', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.plantId);
+    const user = await User.findByPk(req.params.userId);
     const updated = await user.update(req.body)
     res.send(updated);
   } catch (error) {
     next(error);
   }
 });
+
+

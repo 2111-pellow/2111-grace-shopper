@@ -14,6 +14,7 @@ class SingleUserInfo extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+
   componentDidMount() {
     try{
       this.props.loadSingleUser(this.props.auth.id)
@@ -22,11 +23,21 @@ class SingleUserInfo extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.updateUser(this.props.auth.id, this.state);
+  componentDidUpdate(prevProps) {
+    if (prevProps.student.id !== this.props.student.id) {
+      this.setState({
+        firstName: this.props.student.firstName || '',
+        lastName: this.props.student.lastName || '',
+        email: this.props.student.email || ''
+      });
+    }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updateUser({...this.props.user, ...this.state});
+  }
+  
   handleChange(e){
     this.setState({
       [e.target.name]: e.target.value
@@ -35,33 +46,38 @@ class SingleUserInfo extends React.Component {
 
   render() {
     console.log( "singleuserprops" ,this.props)
-    const user = this.props.auth
+    //const user = this.props.auth
+    const user = this.props.user
     const {firstName, lastName, email} = this.state
+
       return (
         <div>
-      <h3>My Profile</h3>
-      <hr />
-      <form id="update-first-name" onSubmit = {this.handleSubmit}>
-        <div>
+        <h3>My Profile</h3>
+        <div className="user-info-update">
+        <form onSubmit = {this.handleSubmit}>
+          <div className="user-fields">
+          <h3>First Name: {user.firstName}</h3>
+          <label>Edit First Name:</label>
+          <input type="text" name="firstName" value={firstName} onChange={this.handleChange} required/>
 
-        <label>First Name: {user.firstName}</label>
-        <input type="text" name="firstName" value={firstName} onChange={this.handleChange} />
+          <h3>Last Name: {user.lastName}</h3>
+          <label>Edit Last Name:</label>
+          <input type="text" name="lastName" value={lastName} onChange={this.handleChange} required/>
 
-        <label>Last Name: {}</label>
-        <input type="text" name="lastName" value={lastName} onChange={this.handleChange} />
+          <h3>Email: {user.email}</h3>
+          <label>Edit Email:</label>
+          <input type="email" name="email" value={email} onChange={this.handleChange} required/>
+          </div>
 
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={this.handleChange} />
-
-        <button type="submit">Save changes</button>
+          <div>
+          <button type="submit">Save changes</button>
+          </div>
+        </form>
         </div>
-      </form>
-
-      </div>
+        </div>
       );
     }
 }
-
 
 const mapState = (state) => {
   return {
