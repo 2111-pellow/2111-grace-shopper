@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addPlant, deletePlant, fetchPlants } from "../store/allPlants";
-import { createOrderThunk } from "../store/cart";
+import { createOrderThunk, updateOrderThunk } from "../store/cart";
 import { MdAddShoppingCart } from "react-icons/md";
 import AddPlant from "./AddPlant";
 //import ReactPaginate from "react-paginate";
@@ -12,6 +12,7 @@ class AllPlants extends React.Component {
     super(props);
     this.state = {
       filtered: "All",
+      quantity: { }
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,17 +43,19 @@ class AllPlants extends React.Component {
   handleClick(plant_id){
     let token = localStorage.getItem("token")
     let userId = this.props.user.id
-    console.log
-     //append if local storage is here
     if (token){
-      console.log("token found, handle click", "plantId", plant_id, "userId", userId)
-      this.props.createOrderThunk(plant_id, userId)
+       if (!this.state.quantity[plant_id]){
+        this.state.quantity[plant_id] = 1
+      this.props.createOrderThunk(plant_id, this.state.quantity[plant_id], userId)
+     } else {
+      this.state.quantity[plant_id]++
+
+     this.props.updateOrderThunk(plant_id, this.state.quantity[plant_id], userId)
      }
    }
+  }
 
   addNewItem(plant_id, name, ImageUrl, price) {
-    let token = localStorage.getItem("token");
-    let tokened = token;
       var items = JSON.parse(localStorage.getItem("cart")) || [];
       var item = items.find((item) => item.name === name);
       if (item) {
@@ -75,7 +78,6 @@ class AllPlants extends React.Component {
       if (filtered != "All") return plant.easeOfCare === filtered;
       return plant;
     });
-   // const plants = this.props.plants;
     if (plants === []) {
       ("out of stock");
     } else {
@@ -95,6 +97,7 @@ class AllPlants extends React.Component {
 
           {plants.map((singlePlant) => (
             <div key={singlePlant.id}>
+
               <div className="product">
                 <Link to={`/plants/${singlePlant.id}`}>
                   {
@@ -120,7 +123,8 @@ class AllPlants extends React.Component {
                     className="add to cart"
                     type="button"
                     onClick={() => {
-                      this.handleClick(singlePlant.id),
+                      console.log(this.props)
+                      this.handleClick(singlePlant.id)
                       this.addNewItem(
                         singlePlant.id,
                         singlePlant.plant_name,
@@ -167,7 +171,8 @@ const mapDispatch = (dispatch) => ({
   fetchPlants: () => dispatch(fetchPlants()),
   deletePlant: (id) => dispatch(deletePlant(id)),
   addPlant: () => dispatch(addPlant),
-  createOrderThunk: (plant_id, userId) => dispatch(createOrderThunk(plant_id, userId))
+  createOrderThunk: (plant_id, quantity, userId) => dispatch(createOrderThunk(plant_id, quantity, userId)),
+  updateOrderThunk: (plant_id, quantity, userId) => dispatch(updateOrderThunk(plant_id, quantity, userId))
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);

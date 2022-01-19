@@ -1,45 +1,47 @@
 import axios from "axios";
 // action types
 
-export const ADD_TO_ORDER = "ADD_TO_ORDER";
 export const CREATE_ORDER = "CREATE_ORDER";
-export const REMOVE_FROM_ORDER = "REMOVE_FROM_CART";
+export const UPDATE_ORDER = "UPDATE_ORDER";
+export const REMOVE_FROM_ORDER = "REMOVE_FROM_ORDER";
 export const ORDER_RESET = "ORDER_RESET";
 
 //action creators
 
-export const addToOrder = (nextOrderItem) => ({
-  type: ADD_TO_ORDER,
-  nextOrderItem,
-});
 export const createOrder = (order) => ({
   type: CREATE_ORDER,
   order,
 });
 
-export const addToOrderThunk = (plantId) => {
+export const updateOrder = (order) => ({
+  type: UPDATE_ORDER,
+  order,
+});
+
+
+export const updateOrderThunk = (plant_id, quantity, userId) => {
+  let token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
-      console.log("inside order thunk")
-      const { data: orderItem } = await axios.get(`/api/plants/${plantId}`);
-      dispatch(addToOrder(orderItem));
+      console.log("inside update order thunk")
+      const { data } = await axios.put(`/api/orders/${userId}`, { plant_id ,  quantity }, {
+        headers: { authorization: token },
+      });
+      dispatch(updateOrder(data));
     } catch (error) {
       console.log("ADD TO ORDER THUNK ERROR");
     }
   };
 };
 
-export const createOrderThunk = (plant_id, userId) => {
+export const createOrderThunk = (plant_id, quantity, userId ) => {
   let token = localStorage.getItem("token");
-  console.log(token);
-  console.log("plant", plant_id)
-  console.log("user", userId)
 
   return async (dispatch) => {
 
     try {
       if (token) {
-        const { data } = await axios.post(`/api/orders/${userId}`, { plant_id }, {
+        const { data } = await axios.post(`/api/orders/${userId}`, { plant_id ,  quantity }, {
           headers: { authorization: token },
         });
         dispatch(createOrder(data));
@@ -59,15 +61,11 @@ export default function cartReducer(state = { order: [] }, action) {
         ...state,
         order: [...state.order, action.order],
       };
-    case ADD_TO_ORDER:
+    case UPDATE_ORDER:
       return {
         ...state,
         order: [
-          ...state.order,
-          {
-            ...action.nextOrderItem,
-          },
-        ],
+          ...state.order.map((plant)=> (plant.id === action.plant_id ? action.plant : plant))]
       };
     default:
       return state;

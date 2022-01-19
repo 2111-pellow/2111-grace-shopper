@@ -81,8 +81,7 @@ router.post("/:userId", async (req, res, next) => {
           console.log("pleaseeee", throughTable.Order_Plant);
           // throughTable.quantity = 999;
           throughTable.Order_Plant.quantity =
-            Number(req.body.quantity) +
-            Number(throughTable.Order_Plant.quantity);
+            Number(req.body.quantity);
           throughTable.Order_Plant.plant_price = newPlant.price;
           await throughTable.Order_Plant.save();
         }
@@ -91,7 +90,7 @@ router.post("/:userId", async (req, res, next) => {
     if (!plantFound) {
       let [throughTable] = await newOrder[0].addPlant(newPlant);
 
-      throughTable.quantity = req.body.quantity;
+      throughTable.quantity = 1;
       throughTable.plant_price = newPlant.price;
       await throughTable.save();
 
