@@ -5,22 +5,20 @@ const db = require("../db");
 const Order = db.define("order", {
   totalPrice: {
     type: Sequelize.DECIMAL(10, 2),
-    allowNull: false,
   },
   transactionComplete: {
     type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
   quantity: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    // allowNull: false,
     validate: {
       min: 0,
-      notEmpty: true,
+      // notEmpty: true,
     },
     defaultValue: 0,
   },
 });
-
-module.exports = Order;
 
 module.exports = Order;
