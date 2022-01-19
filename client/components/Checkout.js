@@ -28,7 +28,7 @@ const Checkout = () => {
       </div>
       <div>
         {cartItems.map((plant, index) => {
-          total += Number(plant.price);
+          total += Number(plant.price * plant.count);
           return (
             <div key={index}>
               <div>{plant.name}</div>
@@ -37,6 +37,7 @@ const Checkout = () => {
                 style={{ width: "200px", height: "200px" }}
               ></img>
               <div>{plant.price}</div>
+              <div>Amount in Cart: {plant.count}</div>
             </div>
           );
         })}
