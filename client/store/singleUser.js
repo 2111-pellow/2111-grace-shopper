@@ -29,10 +29,11 @@ export const fetchSingleUser = (userId) => {
   }
 }
 
-export const updateUser = (userId, updated) => {
+export const updateUser = (user) => {
   return async (dispatch) => {
     try{
-      const {data: updatedUser} = await axios.put(`/api/editUser/${userId}`, updated)
+      console.log(user)
+      const {data: updatedUser} = await axios.put(`/api/users/${user.id}`, user)
       dispatch(_updateUser(updatedUser))
     }
     catch (err) {
