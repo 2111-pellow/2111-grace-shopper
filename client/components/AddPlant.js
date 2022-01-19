@@ -37,7 +37,7 @@ class AddPlant extends React.Component {
   }
 
   render() {
-    const {plant_name, description, category, easeOfCare, price, stock} = this.state;
+    const { plant_name, description, category, easeOfCare, price, stock } = this.state;
     return (
       <div>
         <form id='plant-form' onSubmit={this.handleSubmit}>
@@ -74,7 +74,7 @@ class AddPlant extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addPlant: (campus) => dispatch(addPlant(campus))
+  addPlant: (plant) => dispatch(addPlant(plant))
 });
 
 export default connect(null, mapDispatchToProps)(AddPlant)
