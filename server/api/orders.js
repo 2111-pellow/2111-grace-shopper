@@ -26,52 +26,104 @@ const { requireToken } = require("../authMiddleware");
 //   }
 // });
 
-router.get("/:orderId", requireToken, async (req, res, next) => {
+// router.get("/:orderId", async (req, res, next) => {
+//   try {
+//     const [orders, created] = await Order.findOrCreate({
+//       // where: { transactionComplete: false, id: req.params.orderId },
+//       where: { id: req.params.orderId },
+//     });
+
+//     console.log("this is created", created);
+//     res.json(orders);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+router.get("/:userId", async (req, res, next) => {
   try {
-    const [orders, created] = await Order.findOrCreate({
-      // where: { transactionComplete: false, id: req.params.orderId },
-      where: { id: req.params.orderId },
+    const openOrder = await Order.findAll({
+      where: { transactionComplete: false, userId: req.params.userId },
+      // through table doenst directly interact so need to do plant
+      include: Plant,
     });
 
-    console.log("user id?", req.user);
-
-    console.log("this is order", orders);
-    console.log("this is created", created);
-    res.json(orders);
+    res.json(openOrder);
   } catch (error) {
     next(error);
   }
 });
 
-router.post("/orders", async (req, res, next) => {
+// grab the user id and update it using post???
+
+router.post("/:userId", async (req, res, next) => {
   try {
-    // const orders = await Order.Create({
-    //   where: { transactionComplete: false },
-    // });
-    const newOrder = await Order.create(req.body);
-    // const newPlantInOrder = await Order.findOrCreate(req.body);
-    res.send(newOrder);
+    const newOrder = await Order.findOrCreate({
+      where: { transactionComplete: false, userId: req.params.userId },
+      include: Plant,
+    });
+    const newPlant = await Plant.findOne({
+      where: { id: req.body.plantId },
+    });
+    let plantFound = false;
+    let plantsArray = newOrder[0].plants;
+    if (Array.isArray(plantsArray)) {
+      console.log("hellooooo");
+      for (let i = 0; i < plantsArray.length; i++) {
+        if (plantsArray[i].id === req.body.plantId) {
+          plantFound = true;
+          let [throughTable] = await newOrder[0].getPlants({
+            id: req.body.plantId,
+          });
+          console.log("its meee");
+          console.log("pleaseeee", throughTable.Order_Plant);
+          // throughTable.quantity = 999;
+          throughTable.Order_Plant.quantity =
+            Number(req.body.quantity) +
+            Number(throughTable.Order_Plant.quantity);
+          throughTable.Order_Plant.plant_price = newPlant.price;
+          await throughTable.Order_Plant.save();
+        }
+      }
+    }
+    if (!plantFound) {
+      let [throughTable] = await newOrder[0].addPlant(newPlant);
 
-    // res.json(orders);
+      throughTable.quantity = req.body.quantity;
+      throughTable.plant_price = newPlant.price;
+      await throughTable.save();
+
+      // console.log(Object.keys(brandNewOrder[0].__proto__));
+
+      // res.json(orders);
+    }
+    const finalOrder = await Order.findOne({
+      where: { transactionComplete: false, userId: req.params.userId },
+      include: Plant,
+    });
+
+    res.send(finalOrder);
   } catch (error) {
     next(error);
   }
 });
+// check to see if it is over the stock
+// connect front end to back end
 
 // GET: all orders w order_plant through table
 // api/orders/plants
-router.get("/plants", async (req, res, next) => {
-  try {
-    const orders = await Order.findAll({
-      include: {
-        model: Plant,
-      },
-    });
-    res.json(orders);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/plants", async (req, res, next) => {
+//   try {
+//     const orders = await Order.findAll({
+//       include: {
+//         model: Plant,
+//       },
+//     });
+//     res.json(orders);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // GET: get specific order w order_plant through table
 
@@ -101,20 +153,20 @@ router.get("/plants", async (req, res, next) => {
 // POST - create new
 // PUT - insert, replace if already exist/ edit
 
-router.post("/:orderId", async (req, res, next) => {
-  try {
-    // let { totalPrice,
-    //   transactionComplete,
-    //   userId,
-    //   quantity,
-    //  } = req.body
-    const newOrder = await Order.findOrCreate(req.body);
-    // const newPlantInOrder = await Order.findOrCreate(req.body);
-    res.send(newOrder);
-    // res.send(newPlantInOrder);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.post("/:orderId", async (req, res, next) => {
+//   try {
+//     // let { totalPrice,
+//     //   transactionComplete,
+//     //   userId,
+//     //   quantity,
+//     //  } = req.body
+//     const newOrder = await Order.findOrCreate(req.body);
+//     // const newPlantInOrder = await Order.findOrCreate(req.body);
+//     res.send(newOrder);
+//     // res.send(newPlantInOrder);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

@@ -1251,55 +1251,55 @@ const users = [
   },
 ];
 
+// const orders = [
+//   {
+//     totalPrice: 1000,
+//     transactionComplete: true,
+//     userId: 5
+//   },
+//   {
+//     totalPrice: 20,
+//     transactionComplete: true,
+//     userId: 30
+//   },
+//   {
+//     totalPrice: 45,
+//     transactionComplete: true,
+//     userId: 2
+//   },
+//   {
+//     totalPrice: 28,
+//     transactionComplete: false,
+//     userId: 20
+//   },
+//   {
+//     totalPrice: 39,
+//     transactionComplete: true,
+//     userId: 4
+//   }
+// ];
+// cant hardcode primary or foreign keys
 
-const orders = [
-  {
-    totalPrice: 1000,
-    transactionComplete: true,
-    userId: 5
-  },
-  {
-    totalPrice: 20,
-    transactionComplete: true,
-    userId: 30
-  },
-  {
-    totalPrice: 45,
-    transactionComplete: true,
-    userId: 2
-  },
-  {
-    totalPrice: 28,
-    transactionComplete: false,
-    userId: 20
-  },
-  {
-    totalPrice: 39,
-    transactionComplete: true,
-    userId: 4
-  }
-];
-
-const orderPlants = [
-  {
-    plant_price: 98,
-    stock: 4,
-    orderId: 4,
-    plantId: 1
-  },
-  {
-    plant_price: 34,
-    stock: 1,
-    orderId: 2,
-    plantId: 20
-  },
-  {
-    plant_price: 20,
-    stock: 1,
-    orderId: 1,
-    plantId: 3
-  }
-]
+// const orderPlants = [
+//   {
+//     plant_price: 98,
+//     stock: 4,
+//     orderId: 4,
+//     plantId: 1
+//   },
+//   {
+//     plant_price: 34,
+//     stock: 1,
+//     orderId: 2,
+//     plantId: 20
+//   },
+//   {
+//     plant_price: 20,
+//     stock: 1,
+//     orderId: 1,
+//     plantId: 3
+//   }
+// ]
 
 const seed = async () => {
   try {
@@ -1309,12 +1309,9 @@ const seed = async () => {
 
     await Plant.bulkCreate(plants);
 
-    await Order.bulkCreate(orders);
+    // await Order.bulkCreate(orders);
 
-    await Order_Plant.bulkCreate(orderPlants)
-
-
-
+    // await Order_Plant.bulkCreate(orderPlants)
   } catch (err) {
     console.log(err);
   }
