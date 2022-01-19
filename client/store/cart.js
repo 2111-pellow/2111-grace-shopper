@@ -20,6 +20,7 @@ export const createOrder = (order) => ({
 export const addToOrderThunk = (plantId) => {
   return async (dispatch) => {
     try {
+      console.log("inside order thunk")
       const { data: orderItem } = await axios.get(`/api/plants/${plantId}`);
       dispatch(addToOrder(orderItem));
     } catch (error) {
@@ -28,14 +29,17 @@ export const addToOrderThunk = (plantId) => {
   };
 };
 
-export const createOrderThunk = (order) => {
+export const createOrderThunk = (plant_id, userId) => {
   let token = localStorage.getItem("token");
   console.log(token);
+  console.log("plant", plant_id)
+  console.log("user", userId)
 
   return async (dispatch) => {
+
     try {
       if (token) {
-        const { data } = await axios.get(`/api/orders/${order.id}`, {
+        const { data } = await axios.post(`/api/orders/${userId}`, { plant_id }, {
           headers: { authorization: token },
         });
         dispatch(createOrder(data));

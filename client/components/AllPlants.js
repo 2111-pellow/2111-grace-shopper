@@ -13,6 +13,7 @@ class AllPlants extends React.Component {
     this.state = {
       filtered: "All",
     };
+    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.delete = this.delete.bind(this);
     this.addNewItem = this.addNewItem.bind(this);
@@ -38,13 +39,20 @@ class AllPlants extends React.Component {
     this.props.deletePlant(e.target.value);
   }
 
+  handleClick(plant_id){
+    let token = localStorage.getItem("token")
+    let userId = this.props.user.id
+    console.log
+     //append if local storage is here
+    if (token){
+      console.log("token found, handle click", "plantId", plant_id, "userId", userId)
+      this.props.createOrderThunk(plant_id, userId)
+     }
+   }
+
   addNewItem(plant_id, name, ImageUrl, price) {
     let token = localStorage.getItem("token");
     let tokened = token;
-    if (tokened) {
-      console.log("Hello token is here");
-      createOrderThunk(plant_id, price);
-    } else {
       var items = JSON.parse(localStorage.getItem("cart")) || [];
       var item = items.find((item) => item.name === name);
       if (item) {
@@ -59,7 +67,6 @@ class AllPlants extends React.Component {
         });
       }
       localStorage.setItem("cart", JSON.stringify(items));
-    }
   }
 
   render() {
@@ -113,6 +120,7 @@ class AllPlants extends React.Component {
                     className="add to cart"
                     type="button"
                     onClick={() => {
+                      this.handleClick(singlePlant.id),
                       this.addNewItem(
                         singlePlant.id,
                         singlePlant.plant_name,
@@ -151,6 +159,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
     order: state.cartReducer,
+    user: state.auth,
   };
 };
 
@@ -158,7 +167,7 @@ const mapDispatch = (dispatch) => ({
   fetchPlants: () => dispatch(fetchPlants()),
   deletePlant: (id) => dispatch(deletePlant(id)),
   addPlant: () => dispatch(addPlant),
-  createOrderThunk: (id) => dispatch(createOrderThunk(id)),
+  createOrderThunk: (plant_id, userId) => dispatch(createOrderThunk(plant_id, userId))
 });
 
 export default connect(mapState, mapDispatch)(AllPlants);
