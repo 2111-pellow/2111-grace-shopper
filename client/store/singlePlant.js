@@ -30,7 +30,8 @@ export const getSinglePlantThunk = (plantId) => {
 export const updatePlant = (plantId, updated) => {
   return async (dispatch) => {
     try {
-      const {data: plant} = await axios.put(`/api/plants/editPlant/${plantId}`, updated)
+      const token = window.localStorage.getItem('token')
+      const {data: plant} = await axios.put(`/api/plants/editPlant/${plantId}`, updated, { headers: { authorization: token }})
       dispatch(_updatePlant(plant))
     } catch (err) {
       console.log(err)

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login } from "./components/AuthFormLogIn";
-import { Signup } from "./components/AuthForm";
+import { Login } from "./components/Login";
+import { Signup } from "./components/Signup";
 import { me } from "./store";
 import SinglePlant from "./components/SinglePlant";
 import AboutUs from "./components/AboutUs";
@@ -35,7 +35,7 @@ class Routes extends Component {
             <Route exact path="/users" component={AllUsers} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/myinfo" component = {SingleUserInfo}/>
+            <Route exact path="/myinfo" component={SingleUserInfo} />
             <Route exact path="/checkout" component={Checkout} />
           </Switch>
         ) : (
@@ -55,13 +55,8 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
-    // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
-    // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
   };
 };
@@ -75,6 +70,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
 export default withRouter(connect(mapState, mapDispatch)(Routes));
