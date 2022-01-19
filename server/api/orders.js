@@ -57,23 +57,25 @@ router.get("/:userId", async (req, res, next) => {
 // grab the user id and update it using post???
 
 router.post("/:userId", async (req, res, next) => {
+  console.log("router post")
   try {
     const newOrder = await Order.findOrCreate({
       where: { transactionComplete: false, userId: req.params.userId },
       include: Plant,
     });
+    console.log("req body", req.body)
     const newPlant = await Plant.findOne({
-      where: { id: req.body.plantId },
+      where: { id: req.body.plant_id },
     });
     let plantFound = false;
     let plantsArray = newOrder[0].plants;
     if (Array.isArray(plantsArray)) {
       console.log("hellooooo");
       for (let i = 0; i < plantsArray.length; i++) {
-        if (plantsArray[i].id === req.body.plantId) {
+        if (plantsArray[i].id === req.body.plant_id) {
           plantFound = true;
           let [throughTable] = await newOrder[0].getPlants({
-            id: req.body.plantId,
+            id: req.body.plant_id,
           });
           console.log("its meee");
           console.log("pleaseeee", throughTable.Order_Plant);
