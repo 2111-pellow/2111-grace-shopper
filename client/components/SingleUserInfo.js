@@ -44,7 +44,6 @@ class SingleUserInfo extends React.Component {
   }
 
   render() {
-    console.log("singleuserprops", this.props);
     //const user = this.props.auth
     const user = this.props.user;
     const { firstName, lastName, email } = this.state;

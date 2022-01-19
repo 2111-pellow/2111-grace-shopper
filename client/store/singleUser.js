@@ -22,6 +22,7 @@ export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem('token')
+      console.log('LOOK HERE', token)
       const {data: user } = await axios.get(`/api/users/${userId}`, { headers: { authorization: token }})
       dispatch(getSingleUser(user))
 
@@ -34,7 +35,9 @@ export const fetchSingleUser = (userId) => {
 export const updateUser = (user) => {
   return async (dispatch) => {
     try{
-      const {data: updatedUser} = await axios.put(`/api/users/${user.id}`, user)
+      const token = window.localStorage.getItem('token')
+      console.log('hiii', token)
+      const {data: updatedUser} = await axios.put(`/api/users/${user.id}`, user, { headers: { authorization: token }})
       dispatch(_updateUser(updatedUser))
     }
     catch (err) {

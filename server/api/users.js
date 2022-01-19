@@ -7,8 +7,9 @@ const { requireToken, isAdmin } = require('../authMiddleware')
 //GET: all users to api/users/
 router.get('/',requireToken, isAdmin, async (req, res, next) => {
   try {
-    console.log('HELLLLLO')
-    const users = await User.findAll()
+    const users = await User.findAll({
+      attributes: ['id','firstName', 'lastName', 'email']
+    })
     res.json(users)
   } catch (err) {
     next(err)
@@ -18,12 +19,10 @@ router.get('/',requireToken, isAdmin, async (req, res, next) => {
 //GET: all users to api/users/:userId
 router.get('/:userId', requireToken, async (req, res, next) => {
   try {
-    console.log('server route')
     if(req.params.userId != req.user.id){
       res.send('You dont have access!')
     }
     const user = await User.findByPk(req.params.userId)
-    console.log(user)
     if (!user){
       res.status(404).send("Sorry this user does not exist!")
     } else {
@@ -37,7 +36,8 @@ router.get('/:userId', requireToken, async (req, res, next) => {
 //Add new user to api/users/
 router.post('/', async(req, res, next) => {
   try {
-    const newUser = await User.create(req.body);
+    const { firstName, lastName, email, password } = req.body;
+    const newUser = await User.create({ firstName, lastName, email, password });
     res.status(201).send(newUser)
   } catch (error){
     next(error)
@@ -45,9 +45,12 @@ router.post('/', async(req, res, next) => {
 })
 
 //Update a user to api/users/:userId
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', requireToken, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId);
+    if(req.params.userId != req.user.id){
+      res.send('You dont have access!')
+    }
+    const user = await User.findByPk(req.user.id);
     const updated = await user.update(req.body)
     res.send(updated);
   } catch (error) {
