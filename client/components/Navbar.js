@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 import { useState } from "react"
 
-const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
+const Navbar = ({ handleClick, isLoggedIn, firstName, lastName, isAdmin }) => {
   let cartItems = JSON.parse(localStorage.getItem('cart'))
 // const [quantity, setQuantity] = useState(localStorage.length ? cartItems.length : 0)
 
@@ -39,11 +39,23 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName }) => {
       </div>
     );
 
+    const adminLinks = (
+      <div>
+        <Link to="/users">All Users</Link>
+        <Link to="/plants">Plants Room</Link>
+        <a href="#" onClick={handleClick}>Logout</a>
+        <h4>Welcome, Admin {firstName} {lastName}!</h4>
+      </div>
+    );
+
     return (
       <div>
       <Link to="/" style={{ color: "black" }}><h1>The Greenhouse</h1></Link>
       <nav>
-      { isLoggedIn ? memberLinks : guestLinks }
+      { isAdmin && isLoggedIn ? adminLinks : null }
+      { !isAdmin && isLoggedIn ? memberLinks : null }
+      { !isAdmin && !isLoggedIn ? guestLinks : null }
+
       </nav>
       <hr />
       </div>
@@ -58,6 +70,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     firstName: state.auth.firstName,
     lastName: state.auth.lastName,
+    isAdmin: state.auth.isAdmin
   };
 };
 
