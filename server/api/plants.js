@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Plant = require("../db/models/Plant");
-const { isAdmin } = require('../authMiddleware')
+const { requireToken, isAdmin } = require('../authMiddleware')
 // GET: all plants
 router.get("/", async (req, res, next) => {
   try {
@@ -25,7 +25,7 @@ router.get("/:plantId", async (req, res, next) => {
 });
 
 //PUT api/plants/addPlant
-router.post('/addPlant', async(req, res, next) => {
+router.post('/addPlant', requireToken, isAdmin,async(req, res, next) => {
   try {
     const newPlant = await Plant.create(req.body);
     res.send(newPlant)
@@ -35,7 +35,7 @@ router.post('/addPlant', async(req, res, next) => {
 })
 
 // PUT /api/plants/editPlant/:plantId
-router.put('/editPlant/:plantId', async (req, res, next) => {
+router.put('/editPlant/:plantId', requireToken, isAdmin, async (req, res, next) => {
   try {
     const plant = await Plant.findByPk(req.params.plantId);
     const updated = await plant.update(req.body)
@@ -46,7 +46,7 @@ router.put('/editPlant/:plantId', async (req, res, next) => {
 });
 
 //DELETE /api/plants/:plantId
-router.delete('/:plantId', async(req, res, next) => {
+router.delete('/:plantId', requireToken, isAdmin,async(req, res, next) => {
   try {
     const plant = await Plant.findByPk(req.params.plantId);
     await plant.destroy();

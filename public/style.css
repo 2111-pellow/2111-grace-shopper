@@ -5,11 +5,11 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
-  background: #d7e8f0
+  background: #b1dbc5;
 
 }
 
-button{
+button {
   color: rgb(11, 12, 12);
   border-radius: 30px;
   background: transparent;
@@ -46,7 +46,7 @@ nav {
     display: flex;
     padding: 10px;
     position: relative;
-    background: inherit;
+    background: transparent;
     border-radius: 30px;
     width: 100vw;
     margin: 10px;
@@ -68,7 +68,7 @@ form div {
 .products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 0;
   margin: 0;
@@ -81,10 +81,12 @@ form div {
   padding: 1rem;
 } */
 
+
 .product {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 20px;
   height: 100%;
 }
 
@@ -99,49 +101,23 @@ form div {
   align-items: center;
 }
 
-.add.to.cart {
+.add-to-cart {
   padding: .5rem;
   border: 0.1rem #c0c0c0 solid;
-  background-color: #bfbdb9;
+  background-color: #da9e27;
   cursor: pointer;
 }
 
-.button:hover {
-  border: 0.5rem #808080 solid;
+.add-to-cart:hover {
+  background-color: white;
 }
 
-.pagination {
-  margin: 15px auto;
-  display: flex;
-  list-style: none;
-  outline: none;
-}
 
-.pagination > .active > a{
-  background-color: #47ccde ;
-  border-color: #1d2c2e ;
-  color: #fff;
-}
-
-.pagination > li > a{
-  border: 1px solid #1d2c2e ;
-  padding: 5px 10px;
-  outline: none;
-  cursor: pointer;
-}
-
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-  background-color: #47ccde ;
-  border-color: #1d2c2e;
-  outline: none ;
-}
-
-.pagination > li > a, .pagination > li > span{
-  color: #0e1213
-}
-
-.pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
-  border-radius: unset
+button.add-to-cart:active {
+  color: black;
+  background-color: #da9e27;
+  box-shadow: 3px 3px #666;
+  transform: translateY(4px);
 }
 
 /* cart nav  */

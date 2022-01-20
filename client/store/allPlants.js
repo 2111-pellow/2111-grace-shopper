@@ -39,7 +39,8 @@ export const fetchPlants = () => async (dispatch) => {
 export const addPlant = (newPlant) => {
   return async (dispatch) => {
     try {
-      const {data: plant} = await axios.post('/api/plants/addPlant', newPlant)
+      const token = window.localStorage.getItem('token')
+      const {data: plant} = await axios.post('/api/plants/addPlant', newPlant, { headers: { authorization: token }})
       dispatch(_addPlant(plant))
     } catch (err) {
       console.log(err)
@@ -49,7 +50,8 @@ export const addPlant = (newPlant) => {
 
 export const deletePlant = (plantId) => {
   return async (dispatch) => {
-    const {data: deleted} = await axios.delete(`/api/plants/${plantId}`);
+    const token = window.localStorage.getItem('token')
+    const {data: deleted} = await axios.delete(`/api/plants/${plantId}`, { headers: { authorization: token }})
     dispatch(_deletePlant(deleted));
   };
 };
