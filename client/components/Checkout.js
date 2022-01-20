@@ -3,24 +3,38 @@ import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Link } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
+import Receipt from "./Receipt"
+import { render } from "enzyme";
 // import CardIcon from "../images/credit-card.svg";
 // import ProductImage from "../images/product-image.jpg";
-
 // import "../styles.css";
 
-const Checkout = () => {
-  function handleToken(token) {
-    console.log(token);
-  }
+class Checkout extends React.Component {
+  // function handleToken(token) {
+  //   console.log(token);
+  // }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     showComponent: false,
+  //   };
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+  // handleClick() {
+  //   this.setState({
+  //     showComponent: true,
+  //   });
+  // }
 
-  let cartItems = JSON.parse(localStorage.getItem("cart"));
-  let total = 0;
+  render() {
+    let cartItems = JSON.parse(localStorage.getItem("cart"));
+    let total = 0;
   return (
     <div>
-      <Link to="/login">
+      {/* <Link to="/login">
         <h2>Checkout as a member by logging in!</h2>
       </Link>
-      <h2>Or ...Checkout as a Guest</h2>
+      <h2>Or ...Checkout as a Guest</h2> */}
       <div className="cartscreen">
         <div className="cartscreen__left">
           <h2>Cart Summary</h2>
@@ -41,8 +55,12 @@ const Checkout = () => {
             </div>
           );
         })}
-        <p>Subtotal for your items is ${total}</p>
-        <StripeCheckout
+        <p>Total price for your items is ${total}</p>
+        <Link to="/receipt">
+          <button>Make a Payment</button>
+        </Link>
+
+        {/* <StripeCheckout
           stripeKey="pk_test_51KIxdeDln4s4jzUmC2iVGwEhn3THaCORSorbdcBovd4cJzf1BpDPRmZfZU4SSRbuQBN97Ekwdb5J2HW463AoxmjZ00RdSYjvoA"
           token={handleToken}
           label="Checkout with 💳"
@@ -53,10 +71,11 @@ const Checkout = () => {
           amount={total * 100}
           // plant_name={this.plant.plant_name}
           panelLabel="Buy for {{amount}}"
-        />
+        /> */}
       </div>
     </div>
   );
+ }
 };
 
 export default Checkout;

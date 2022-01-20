@@ -14,6 +14,7 @@ import { fetchPlants } from "./store/allPlants";
 import SingleUserInfo from "./components/SingleUserInfo";
 import Checkout from "./components/Checkout";
 import AllUsers from "./components/AllUsers";
+import Receipt from "./components/Receipt";
 
 /**
  * COMPONENT
@@ -37,6 +38,7 @@ class Routes extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/myinfo" component = {SingleUserInfo}/>
             <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/receipt" component={Receipt} />
           </Switch>
         ) : (
           <Switch>
@@ -48,6 +50,7 @@ class Routes extends Component {
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/receipt" component={Receipt} />
           </Switch>
         )}
       </div>
