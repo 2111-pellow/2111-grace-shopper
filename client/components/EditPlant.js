@@ -19,7 +19,6 @@ class EditPlant extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    console.log(prevProps)
     if (prevProps.plant.id !== this.props.plant.id){
       this.setState({
         plant_name: this.props.plant.plant_name || '',
@@ -49,7 +48,6 @@ class EditPlant extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'PROPS IN EDITPLANT')
     const {plant_name, description, category, easeOfCare, price, stock} = this.state;
     return (
       <div>
