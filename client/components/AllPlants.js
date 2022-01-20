@@ -124,7 +124,6 @@ class AllPlants extends React.Component {
                     className="add-to-cart"
                     type="button"
                     onClick={() => {
-                      console.log(this.props)
                       this.handleClick(singlePlant.id)
                       this.addNewItem(
                         singlePlant.id,
