@@ -14,6 +14,7 @@ class SinglePlant extends React.Component {
       quantity: { }
     };
     this.addNewItem = this.addNewItem.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
   }
   componentDidMount() {
