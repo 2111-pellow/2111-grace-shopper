@@ -23,7 +23,6 @@ export const updateOrderThunk = (plant_id, quantity, userId) => {
   let token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
-      console.log("inside update order thunk")
       const { data } = await axios.put(`/api/orders/${userId}`, { plant_id ,  quantity }, {
         headers: { authorization: token },
       });
@@ -36,9 +35,7 @@ export const updateOrderThunk = (plant_id, quantity, userId) => {
 
 export const createOrderThunk = (plant_id, quantity, userId ) => {
   let token = localStorage.getItem("token");
-
   return async (dispatch) => {
-
     try {
       if (token) {
         const { data } = await axios.post(`/api/orders/${userId}`, { plant_id ,  quantity }, {

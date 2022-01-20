@@ -34,6 +34,7 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName, isAdmin }) => {
     </div>
   );
 
+
   const guestLinks = (
     <div>
       <Link to="/login" style={{ color: "Black" }}>
@@ -52,12 +53,13 @@ const Navbar = ({ handleClick, isLoggedIn, firstName, lastName, isAdmin }) => {
         <i className="fas fa-shopping-cart"></i>
         <span>
           Cart
-          <span id="add-to-cart"> 0</span>
+ {/* <span id="add-to-cart"></span> */}
           {/* <span className="cartlogo__badge">{cartItems.length}</span> */}
         </span>
       </Link>
     </div>
   );
+
 
   const adminLinks = (
     <div>

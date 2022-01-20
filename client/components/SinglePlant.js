@@ -3,13 +3,18 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSinglePlantThunk } from "../store/singlePlant";
 import { MdAddShoppingCart } from "react-icons/md";
-import { addToOrderThunk } from "../store/cart";
+import { createOrderThunk } from "../store/cart";
 import EditPlant from "./EditPlant";
 
 class SinglePlant extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      quantity: { }
+    };
     this.addNewItem = this.addNewItem.bind(this);
+
   }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
@@ -17,6 +22,24 @@ class SinglePlant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
   }
+
+
+
+  handleClick(plant_id){
+    let token = localStorage.getItem("token")
+    let userId = this.props.user.id
+    if (token){
+       if (!this.state.quantity[plant_id]){
+        this.state.quantity[plant_id] = 1
+      this.props.createOrderThunk(plant_id, this.state.quantity[plant_id], userId)
+     } else {
+      this.state.quantity[plant_id]++
+
+     this.props.updateOrderThunk(plant_id, this.state.quantity[plant_id], userId)
+     }
+   }
+  }
+
   addNewItem(plant_id, name, ImageUrl, price) {
     var items = JSON.parse(localStorage.getItem("cart")) || [];
     var item = items.find((item) => item.name === name);
@@ -58,24 +81,13 @@ class SinglePlant extends React.Component {
               </p>
               <p>
                 Amount Currently In Stock:
-                <input
-                  type="number"
-                  name="points"
-                  className="quantity"
-                  step="1"
-                  min="1"
-                  max={plant.stock}
-                  placeholder="1"
-                  onChange={(event) =>
-                    this.changePlantQuantity(plant.id, event)
-                  }
-                  style={{ width: "130px" }}
-                />
+                {plant.stock}
               </p>
               <p>
                 <button
                   type="button"
                   onClick={() => {
+                    this.handleClick(plant.id)
                     this.addNewItem(
                       plant.id,
                       plant.plant_name,
@@ -101,12 +113,14 @@ const mapState = (state) => {
     plant: state.singlePlantReducer,
     cart: state.cartReducer,
     isAdmin: state.auth.isAdmin,
+    order: state.cartReducer,
   };
 };
 
 const mapDispatch = (dispatch) => ({
   getSinglePlant: (plantId) => dispatch(getSinglePlantThunk(plantId)),
   addToOrder: (plantId) => dispatch(addToOrderThunk(plantId)),
+  createOrderThunk: (plant_id, quantity, userId) => dispatch(createOrderThunk(plant_id, quantity, userId))
 });
 
 export default connect(mapState, mapDispatch)(SinglePlant);

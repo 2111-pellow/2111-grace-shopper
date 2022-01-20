@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
-// const User = require("./User");
 
 const Order = db.define("order", {
   totalPrice: {
@@ -12,10 +11,8 @@ const Order = db.define("order", {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    // allowNull: false,
     validate: {
       min: 0,
-      // notEmpty: true,
     },
     defaultValue: 0,
   },
