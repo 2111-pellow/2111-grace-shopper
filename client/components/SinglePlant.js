@@ -9,11 +9,12 @@ import EditPlant from "./EditPlant";
 class SinglePlant extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       quantity: { }
     };
     this.addNewItem = this.addNewItem.bind(this);
-    this.handleClick = this.handleClick.bind(this)
+
   }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
@@ -21,6 +22,8 @@ class SinglePlant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
   }
+
+
 
   handleClick(plant_id){
     let token = localStorage.getItem("token")
@@ -36,6 +39,7 @@ class SinglePlant extends React.Component {
      }
    }
   }
+
   addNewItem(plant_id, name, ImageUrl, price) {
     var items = JSON.parse(localStorage.getItem("cart")) || [];
     var item = items.find((item) => item.name === name);
@@ -62,12 +66,12 @@ class SinglePlant extends React.Component {
         <div className="center">
           {this.props.isAdmin ? <EditPlant plant={this.props.plant} /> : null}
 
-          <div>{plant.plant_name}</div>
+          <b>{plant.plant_name}</b>
           <img
             src={plant.imageUrl}
             style={{ width: "200px", height: "200px" }}
           />
-          <div>$ {plant.price}</div>
+          <div> $ {plant.price}</div>
           <div>{plant.description}</div>
 
           <div className="center">

@@ -15,6 +15,12 @@ button {
   background: transparent;
   margin: 20px;
   padding: 8px;
+  transition: all 0.3s ease-out;
+}
+button:hover,
+button:focus,
+button:active {
+  transform: scale(1.2)
 }
 
 input {
@@ -32,7 +38,13 @@ input {
 
 a {
   text-decoration: none;
+  transition: all 0.3s ease-out;
 }
+/* a:hover,
+a:focus,
+a:active {
+  transform: scale(1.2)
+} */
 
 label {
   display: block;
@@ -56,6 +68,12 @@ nav {
 nav a {
   color: rgb(94, 167, 115);
   padding: 30px 30px;
+  transition: all 0.3s ease-out;
+}
+nav a:hover,
+nav a:focus,
+nav a:active {
+  transform: scale(1.2)
 }
 
 form div {
@@ -148,14 +166,14 @@ button.add-to-cart:active {
 }
 .right__info {
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 500px;
 
   margin-top: 50px;
 
-  background: #fff;
+  background: rgb(250, 255, 245);
   box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
 }
 
@@ -177,7 +195,7 @@ button.add-to-cart:active {
   align-items: center; */
   grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
   gap: 8px;
-  background: #fff;
+  background: rgb(235, 245, 242);
   border: 2px;
   place-items:center;
 }
@@ -198,49 +216,55 @@ button.add-to-cart:active {
   transition: all 0.3s ease-out;
 
 }
-
-/* cart screen */
-.cartscreen {
-  display: flex;
-  max-width: 1300px;
-  margin: 2rem auto;
-
-}
-.cartscreen h2 {
-  margin-bottom: 1rem;
-}
-.cartscreen__left {
-  flex: 0.7;
-  margin-right: 10rem;
-  background-color: transparent;
-  padding: 1rem;
-}
-
-.cartscreen__right {
-  flex: 0.3;
-  margin-top: 3rem;
-  background: white;
-  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
-  height: fit-content;
-
-}
-
-.cartscreen_right div {
-  border-bottom: 1px solid rgba(0,0,0, 0.2);
-  padding: 1rem;
-}
-.cartscren__right div:last-child {
-  border: none;
-
-}
-.cartscreen__info p{
-  padding: 8px;
-
-}
 .cartitem__deleteBtn:hover,
 .cartitem__deleteBtn:focus,
 .cartitem__deleteBtn:active {
   transform: scale(1.2)
+}
+.cartitem__add__subtract {
+  padding: 10px 17px;
+  background: 1px solid #171717;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.cartitem__add__subtract:hover,
+.cartitem__add__subtract:focus,
+.cartitem__add__subtract:active {
+  transform: scale(1.2)
+}
+.add_subtract {
+  display:flex;
+  flex-direction: row;
+}
+.amountInCart {
+  justify-content: center;
+}
+
+.receipt {
+
+
+  padding: 1rem;
+  margin-bottom: 8px;
+  /* margin-right: 50px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+  gap: 8px;
+  background: rgb(235, 245, 242);
+  border: 2px;
+  place-items:center;
+}
+.cart_cart{
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.receiptTotal{
+  margin-left: 40%;
+  margin-right: 40%;
+
 }
 
 /* User Info Page */
