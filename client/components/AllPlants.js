@@ -80,7 +80,7 @@ class AllPlants extends React.Component {
       ("out of stock");
     } else {
       return (
-        <div>
+        <div className="AllPlants">
           <div>
             <label htmlFor="filter">Ease of Care:</label>
             <select name="filter" value={filtered} onChange={this.handleChange}>
@@ -92,7 +92,7 @@ class AllPlants extends React.Component {
           </div>
 
           {this.props.isAdmin ? <AddPlant /> : null}
-
+          <div className="products">
           {plants.map((singlePlant) => (
             <div key={singlePlant.id}>
               <div className="product">
@@ -116,8 +116,9 @@ class AllPlants extends React.Component {
                 </div>
                 <div>
                   {`$${singlePlant.price}`}
+
                   <button
-                    className="add to cart"
+                    className="add-to-cart"
                     type="button"
                     onClick={() => {
                       this.handleClick(singlePlant.id),
@@ -127,15 +128,13 @@ class AllPlants extends React.Component {
                         singlePlant.imageUrl,
                         singlePlant.price
                       );
-                    }}
-                  >
-                    {" "}
+                    }} >
                     Add To {<MdAddShoppingCart />}
                   </button>
                 </div>
                 {this.props.isAdmin ? (
                   <button
-                    className="add to cart"
+                    className="delete button"
                     type="button"
                     onClick={this.delete}
                     value={singlePlant.id}
@@ -147,6 +146,7 @@ class AllPlants extends React.Component {
               </div>
             </div>
           ))}
+          </div>
         </div>
       );
     }
