@@ -1,24 +1,21 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login } from "./components/Login";
-import { Signup } from "./components/Signup";
+import  Login  from "./components/Login";
+import  Signup  from "./components/Signup";
 import { me } from "./store";
 import SinglePlant from "./components/SinglePlant";
 import AboutUs from "./components/AboutUs";
 import AllPlants from "./components/AllPlants";
 import Cart from "./components/Cart";
 import HomePage from "./components/HomePage";
-//import EditSingleUser from "./components/EditSingleUser";
 import { fetchPlants } from "./store/allPlants";
 import SingleUserInfo from "./components/SingleUserInfo";
 import Checkout from "./components/Checkout";
 import AllUsers from "./components/AllUsers";
 import Receipt from "./components/Receipt";
 
-/**
- * COMPONENT
- */
+
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
