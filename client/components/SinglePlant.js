@@ -9,7 +9,7 @@ import EditPlant from "./EditPlant";
 class SinglePlant extends React.Component {
   constructor(props) {
     super(props);
-    this.addNewItem = this.addNewItem.bind(this)
+    this.addNewItem = this.addNewItem.bind(this);
   }
   componentDidMount() {
     this.props.getSinglePlant(this.props.match.params.plantId);
@@ -17,9 +17,9 @@ class SinglePlant extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
   }
-   addNewItem(plant_id, name, ImageUrl, price) {
-    var items = JSON.parse(localStorage.getItem('cart')) || [];
-    var item = items.find(item => item.name === name);
+  addNewItem(plant_id, name, ImageUrl, price) {
+    var items = JSON.parse(localStorage.getItem("cart")) || [];
+    var item = items.find((item) => item.name === name);
     if (item) {
       item.count = Number(item.count) + 1;
     } else {
@@ -28,10 +28,10 @@ class SinglePlant extends React.Component {
         name,
         ImageUrl,
         count: 1,
-        price
-      })
+        price,
+      });
     }
-    localStorage.setItem('cart', JSON.stringify(items));
+    localStorage.setItem("cart", JSON.stringify(items));
   }
 
   render() {
@@ -41,7 +41,7 @@ class SinglePlant extends React.Component {
     } else {
       return (
         <div className="center">
-          {this.props.isAdmin ? <EditPlant plant={this.props.plant}/> : null}
+          {this.props.isAdmin ? <EditPlant plant={this.props.plant} /> : null}
 
           <div>{plant.plant_name}</div>
           <img
@@ -58,27 +58,23 @@ class SinglePlant extends React.Component {
               </p>
               <p>
                 Amount Currently In Stock:
-                <input
-                  type="number"
-                  name="points"
-                  className="quantity"
-                  step="1"
-                  min="1"
-                  max={plant.stock}
-                  placeholder="1"
-                  onChange={(event) =>
-                    this.changePlantQuantity(plant.id, event)
-                  }
-                  style={{ width: "130px" }}
-                />
+                {plant.stock}
               </p>
               <p>
-              <button
-                    type="button"
-                     onClick={() => {
-                       this.addNewItem(plant.id, plant.plant_name, plant.imageUrl, plant.price)}}
-                   > Add To {<MdAddShoppingCart />}
-                  </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.addNewItem(
+                      plant.id,
+                      plant.plant_name,
+                      plant.imageUrl,
+                      plant.price
+                    );
+                  }}
+                >
+                  {" "}
+                  Add To {<MdAddShoppingCart />}
+                </button>
               </p>
             </div>
           </div>
@@ -92,7 +88,7 @@ const mapState = (state) => {
   return {
     plant: state.singlePlantReducer,
     cart: state.cartReducer,
-    isAdmin: state.auth.isAdmin
+    isAdmin: state.auth.isAdmin,
   };
 };
 
